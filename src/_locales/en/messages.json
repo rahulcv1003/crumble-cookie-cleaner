@@ -1,0 +1,1613 @@
+{
+  "extName": {
+    "message": "Crumble: Auto-Delete Cookies on Tab Close",
+    "description": "Extension name shown in the Chrome Web Store and on chrome://extensions. Max 75 characters."
+  },
+  "extDescription": {
+    "message": "Deletes cookies and site data when you close a tab. Keep the sites you trust. Imports your Cookie AutoDelete lists.",
+    "description": "Short store description. Max 132 characters."
+  },
+  "commandCleanNow": {
+    "message": "Clean now",
+    "description": "Keyboard shortcut name on chrome://extensions/shortcuts. Runs a cleanup of sites not open in a tab and not kept."
+  },
+  "ruleErrorEmpty": {
+    "message": "Type a site, for example example.com, *.example.com or /regex/.",
+    "description": "Shown when a rule entry is empty."
+  },
+  "ruleErrorRegexEmpty": {
+    "message": "\"$PATTERN$\" is an empty regular expression. Write a pattern between the slashes.",
+    "description": "Shown when a rule is written as // with nothing between the slashes.",
+    "placeholders": {
+      "pattern": {
+        "content": "$1",
+        "example": "//"
+      }
+    }
+  },
+  "ruleErrorRegexUnclosed": {
+    "message": "\"$PATTERN$\" starts with / but does not end with /. Regular expressions are written between two slashes, for example /example\\.(com|net)/.",
+    "description": "Shown when a rule starts with a slash but has no closing slash.",
+    "placeholders": {
+      "pattern": {
+        "content": "$1",
+        "example": "/abc"
+      }
+    }
+  },
+  "ruleErrorRegexTooLong": {
+    "message": "\"$PATTERN$\" is longer than 200 characters. Shorten the regular expression.",
+    "description": "Shown when a regex rule is longer than 200 characters.",
+    "placeholders": {
+      "pattern": {
+        "content": "$1",
+        "example": "/very-long/"
+      }
+    }
+  },
+  "ruleErrorRegexUnsafe": {
+    "message": "\"$PATTERN$\" could take too long to check against long site names. Use at most two *, + or {n,} repeats, and do not repeat a group that already repeats or has |.",
+    "description": "Shown when a regex could cause catastrophic backtracking: nested repetition such as (a+)+, a repeated alternation such as (a|b)+, or more than two unbounded repeats.",
+    "placeholders": {
+      "pattern": {
+        "content": "$1",
+        "example": "/(a+)+/"
+      }
+    }
+  },
+  "ruleErrorRegexUnterminatedClass": {
+    "message": "\"$PATTERN$\" has a [ without a closing ]. Close the character class.",
+    "description": "Invalid regex: unterminated character class.",
+    "placeholders": {
+      "pattern": {
+        "content": "$1",
+        "example": "/[a-/"
+      }
+    }
+  },
+  "ruleErrorRegexUnterminatedGroup": {
+    "message": "\"$PATTERN$\" has a ( without a closing ). Close the group.",
+    "description": "Invalid regex: unterminated group.",
+    "placeholders": {
+      "pattern": {
+        "content": "$1",
+        "example": "/(abc/"
+      }
+    }
+  },
+  "ruleErrorRegexUnmatchedParen": {
+    "message": "\"$PATTERN$\" has a ) without an opening (. Remove it or add the (.",
+    "description": "Invalid regex: unmatched closing parenthesis.",
+    "placeholders": {
+      "pattern": {
+        "content": "$1",
+        "example": "/abc)/"
+      }
+    }
+  },
+  "ruleErrorRegexNothingToRepeat": {
+    "message": "\"$PATTERN$\" has a *, + or ? with nothing before it to repeat. Put a character or group before it.",
+    "description": "Invalid regex: quantifier with nothing to repeat.",
+    "placeholders": {
+      "pattern": {
+        "content": "$1",
+        "example": "/*abc/"
+      }
+    }
+  },
+  "ruleErrorRegexRangeOrder": {
+    "message": "\"$PATTERN$\" has a range written backwards, such as z-a. Write the lower character first.",
+    "description": "Invalid regex: range out of order in character class.",
+    "placeholders": {
+      "pattern": {
+        "content": "$1",
+        "example": "/[z-a]/"
+      }
+    }
+  },
+  "ruleErrorRegexTrailingBackslash": {
+    "message": "\"$PATTERN$\" ends with a single \\. Remove it or escape it as \\\\.",
+    "description": "Invalid regex: backslash at end of pattern.",
+    "placeholders": {
+      "pattern": {
+        "content": "$1",
+        "example": "/abc\\/"
+      }
+    }
+  },
+  "ruleErrorRegexQuantifierOrder": {
+    "message": "\"$PATTERN$\" has a repeat count written backwards, such as {3,1}. Write the smaller number first.",
+    "description": "Invalid regex: numbers out of order in {} quantifier.",
+    "placeholders": {
+      "pattern": {
+        "content": "$1",
+        "example": "/a{3,1}/"
+      }
+    }
+  },
+  "ruleErrorRegexOther": {
+    "message": "\"$PATTERN$\" is not a valid regular expression ($DETAIL$). Check the pattern between the slashes.",
+    "description": "Invalid regex, any other reason. DETAIL is the browser's own description of the problem.",
+    "placeholders": {
+      "pattern": {
+        "content": "$1",
+        "example": "/(?<a/"
+      },
+      "detail": {
+        "content": "$2",
+        "example": "Invalid capture group name"
+      }
+    }
+  },
+  "productName": {
+    "message": "Crumble",
+    "description": "Product name, small, at the top of the popup."
+  },
+  "popupSettings": {
+    "message": "Settings",
+    "description": "Popup link that opens the settings page."
+  },
+  "statusKept": {
+    "message": "Kept.",
+    "description": "Popup status: the current site is on the Keep list."
+  },
+  "statusKeptUntilRestart": {
+    "message": "Kept until restart.",
+    "description": "Popup status: the current site is on the Keep until restart list."
+  },
+  "statusWillBeCleaned": {
+    "message": "Will be cleaned after you close it.",
+    "description": "Popup status: the current site is not kept."
+  },
+  "statusNotWebsiteTitle": {
+    "message": "Not a website",
+    "description": "Popup heading on browser pages, PDFs and other non-web pages."
+  },
+  "statusNotWebsite": {
+    "message": "Crumble only cleans websites, so there is nothing to do on this page.",
+    "description": "Popup status on non-web pages, under the heading 'Not a website'."
+  },
+  "cookieCountSentenceOne": {
+    "message": "$P1$ cookie.",
+    "description": "Popup: cookie count for the site, partitioned cookies included.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "cookieCountSentenceOther": {
+    "message": "$P1$ cookies.",
+    "description": "Popup: cookie count for the site, partitioned cookies included.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "actionKeep": {
+    "message": "Keep",
+    "description": "Popup button: add the current site to the Keep list."
+  },
+  "actionKeepUntilRestart": {
+    "message": "Keep until restart",
+    "description": "Popup button: add the current site to the Keep until restart list."
+  },
+  "actionRemoveFromList": {
+    "message": "Remove from list",
+    "description": "Popup button: remove the current site's rule."
+  },
+  "actionCleanSiteNow": {
+    "message": "Clean this site now",
+    "description": "Popup button: delete this site's cookies and site data now."
+  },
+  "actionEditRule": {
+    "message": "Edit rule",
+    "description": "Popup link: open this site's rule in settings."
+  },
+  "autoCleanLabel": {
+    "message": "Automatic cleaning",
+    "description": "Popup switch label."
+  },
+  "setupUnfinished": {
+    "message": "Setup isn't finished, so nothing is cleaned automatically.",
+    "description": "Popup line shown instead of the automatic cleaning switch until setup is done."
+  },
+  "actionFinishSetup": {
+    "message": "Finish setup",
+    "description": "Popup link to the welcome page."
+  },
+  "actionCleanNow": {
+    "message": "Clean now",
+    "description": "Button: clean sites that are not open and not kept."
+  },
+  "actionCleanIncludingOpen": {
+    "message": "Clean, including open tabs",
+    "description": "Button: clean every site that is not kept, even open ones. Asks first."
+  },
+  "confirmCleanIncludingOpenOne": {
+    "message": "Delete cookies and site data for $P1$ site, including sites open in tabs? This can't be undone after 2 minutes.",
+    "description": "Confirmation before cleaning open tabs.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "confirmCleanIncludingOpenOther": {
+    "message": "Delete cookies and site data for $P1$ sites, including sites open in tabs? This can't be undone after 2 minutes.",
+    "description": "Confirmation before cleaning open tabs.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "confirmNothingToClean": {
+    "message": "There is nothing to clean. Every site with data is kept.",
+    "description": "Shown instead of the confirmation when nothing would be deleted."
+  },
+  "actionConfirmCleanIncludingOpen": {
+    "message": "Delete cookies and site data",
+    "description": "Confirm button for cleaning open tabs."
+  },
+  "actionCancel": {
+    "message": "Cancel",
+    "description": "Button that closes a confirmation without changing anything."
+  },
+  "lastCleanup": {
+    "message": "Cleaned $P1$, $P2$, $P3$.",
+    "description": "Popup: last cleanup. $1 = '14 sites', $2 = '212 cookies', $3 = '2 minutes ago'.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      },
+      "p3": {
+        "content": "$3"
+      }
+    }
+  },
+  "lastCleanupNothing": {
+    "message": "Last cleanup $P1$ had nothing to clean.",
+    "description": "Popup: last cleanup removed nothing. $1 = '2 minutes ago'.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "lastCleanupJustNow": {
+    "message": "Cleaned $P1$, $P2$.",
+    "description": "Popup: result of a cleanup the user just ran.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      }
+    }
+  },
+  "noticeNothingCleaned": {
+    "message": "Nothing to clean. Kept and open sites were left alone.",
+    "description": "Popup: a manual cleanup found nothing to remove."
+  },
+  "actionUndoCleanup": {
+    "message": "Undo cleanup",
+    "description": "Popup link: restore the cookies deleted by the last cleanup."
+  },
+  "undoHint": {
+    "message": "Undo restores cookies only. Site data can't be restored.",
+    "description": "Popup hint under the undo link."
+  },
+  "undoRestoredOne": {
+    "message": "Restored $P1$ cookie. Site data can't be restored.",
+    "description": "Popup: result of undo.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "undoRestoredOther": {
+    "message": "Restored $P1$ cookies. Site data can't be restored.",
+    "description": "Popup: result of undo.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "undoExpired": {
+    "message": "Undo is no longer available. Deleted cookies are kept for 2 minutes only.",
+    "description": "Popup: undo after the window closed."
+  },
+  "actionDetails": {
+    "message": "Details",
+    "description": "Popup link: open the cleanup log."
+  },
+  "progressCleaning": {
+    "message": "Cleaning $P1$ of $P2$ cookies",
+    "description": "Popup: progress of a large cleanup.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      }
+    }
+  },
+  "ratingAsk": {
+    "message": "If Crumble is useful to you, a rating in the Chrome Web Store helps other people find it.",
+    "description": "One-time rating request in the popup."
+  },
+  "actionRate": {
+    "message": "Rate Crumble",
+    "description": "Opens the store review page."
+  },
+  "actionNotNow": {
+    "message": "Not now",
+    "description": "Dismisses an offer without doing anything."
+  },
+  "countSitesOne": {
+    "message": "$P1$ site",
+    "description": "Count of sites.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "countSitesOther": {
+    "message": "$P1$ sites",
+    "description": "Count of sites.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "countCookiesOne": {
+    "message": "$P1$ cookie",
+    "description": "Count of cookies.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "countCookiesOther": {
+    "message": "$P1$ cookies",
+    "description": "Count of cookies.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifyTitle": {
+    "message": "Crumble",
+    "description": "Notification title."
+  },
+  "notifyCleaned": {
+    "message": "Cleaned $P1$, $P2$.",
+    "description": "Notification after a cleanup.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      }
+    }
+  },
+  "notifyNothingCleaned": {
+    "message": "Nothing to clean. Kept and open sites were left alone.",
+    "description": "Notification after a manual cleanup that removed nothing."
+  },
+  "menuKeepSite": {
+    "message": "Keep this site",
+    "description": "Context menu entry."
+  },
+  "menuKeepSiteUntilRestart": {
+    "message": "Keep this site until restart",
+    "description": "Context menu entry."
+  },
+  "menuCleanSiteNow": {
+    "message": "Clean this site now",
+    "description": "Context menu entry."
+  },
+  "settingsTitle": {
+    "message": "Crumble settings",
+    "description": "Settings page title."
+  },
+  "sectionLists": {
+    "message": "Lists",
+    "description": "Settings section."
+  },
+  "sectionCleaning": {
+    "message": "Cleaning",
+    "description": "Settings section."
+  },
+  "sectionSiteData": {
+    "message": "Site data",
+    "description": "Settings section."
+  },
+  "sectionLog": {
+    "message": "Log",
+    "description": "Settings section."
+  },
+  "sectionDisplay": {
+    "message": "Display",
+    "description": "Settings section."
+  },
+  "sectionAbout": {
+    "message": "About",
+    "description": "Settings section."
+  },
+  "announceSaved": {
+    "message": "Saved.",
+    "description": "Screen reader announcement after a setting is saved."
+  },
+  "listsNote": {
+    "message": "Keep: never cleaned automatically. Keep until restart: kept until the browser next starts, then cleaned. A site on both lists is kept.",
+    "description": "Explanation at the top of Lists."
+  },
+  "listKeep": {
+    "message": "Keep",
+    "description": "List name."
+  },
+  "listRestart": {
+    "message": "Keep until restart",
+    "description": "List name."
+  },
+  "addRuleLabel": {
+    "message": "Sites to add",
+    "description": "Label for the add-rule field."
+  },
+  "addRulePlaceholder": {
+    "message": "example.com, *.example.org, /regex/",
+    "description": "Placeholder for the add-rule field. Patterns are code."
+  },
+  "addRuleHelp": {
+    "message": "example.com matches it and www.example.com. *.example.com also matches every subdomain. * matches anything. /pattern/ is a regular expression. Separate several with commas.",
+    "description": "Help under the add-rule field."
+  },
+  "addRuleListLabel": {
+    "message": "List for new rules",
+    "description": "Label for the list chooser next to the add field."
+  },
+  "actionAddRules": {
+    "message": "Add to list",
+    "description": "Adds the typed patterns as rules."
+  },
+  "announceRulesAddedOne": {
+    "message": "Added $P1$ rule.",
+    "description": "Screen reader announcement.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "announceRulesAddedOther": {
+    "message": "Added $P1$ rules.",
+    "description": "Screen reader announcement.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "searchRulesLabel": {
+    "message": "Search rules",
+    "description": "Label for the rule search field."
+  },
+  "searchRulesPlaceholder": {
+    "message": "Search patterns and notes",
+    "description": "Placeholder for the rule search field."
+  },
+  "filterLabel": {
+    "message": "Show",
+    "description": "Label for the list filter."
+  },
+  "filterAll": {
+    "message": "All",
+    "description": "Filter: show rules on both lists."
+  },
+  "countRulesOne": {
+    "message": "$P1$ rule",
+    "description": "Number of rules shown.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "countRulesOther": {
+    "message": "$P1$ rules",
+    "description": "Number of rules shown.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "columnSelect": {
+    "message": "Select",
+    "description": "Hidden column header for checkboxes."
+  },
+  "columnStatus": {
+    "message": "List mark",
+    "description": "Hidden column header for the status mark."
+  },
+  "columnPattern": {
+    "message": "Pattern",
+    "description": "Column header."
+  },
+  "columnList": {
+    "message": "List",
+    "description": "Column header."
+  },
+  "columnCookies": {
+    "message": "Cookies",
+    "description": "Column header."
+  },
+  "columnSiteData": {
+    "message": "Site data",
+    "description": "Column header."
+  },
+  "columnNote": {
+    "message": "Note",
+    "description": "Column header."
+  },
+  "columnActions": {
+    "message": "Actions",
+    "description": "Hidden column header for row actions."
+  },
+  "selectRule": {
+    "message": "Select $P1$",
+    "description": "Checkbox label for a rule. $1 = pattern.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "editRuleLabel": {
+    "message": "Edit $P1$",
+    "description": "Accessible name of a row's Edit link.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "deleteRuleLabel": {
+    "message": "Delete $P1$",
+    "description": "Accessible name of a row's Delete link.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "actionEdit": {
+    "message": "Edit",
+    "description": "Row link: edit the rule."
+  },
+  "actionDelete": {
+    "message": "Delete",
+    "description": "Row link: delete the rule."
+  },
+  "cookiesAll": {
+    "message": "All cookies",
+    "description": "Rule summary: keeps every cookie."
+  },
+  "cookiesOnly": {
+    "message": "Only $P1$",
+    "description": "Rule summary: keeps only the named cookies. $1 = names.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "siteDataKeepsAll": {
+    "message": "Kept",
+    "description": "Rule summary: keeps all site data."
+  },
+  "siteDataCleans": {
+    "message": "Cleans $P1$",
+    "description": "Rule summary: cleans these site data types. $1 = list of types.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "noRulesYet": {
+    "message": "No rules yet. Add a site above, or use Keep in the popup on a site you want to stay logged in to.",
+    "description": "Empty state of the rule table."
+  },
+  "noRulesMatch": {
+    "message": "No rules match this search.",
+    "description": "Empty search result."
+  },
+  "actionDeleteSelectedOne": {
+    "message": "Delete selected ($P1$)",
+    "description": "Bulk delete button.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "actionDeleteSelectedOther": {
+    "message": "Delete selected ($P1$)",
+    "description": "Bulk delete button.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "actionImportRules": {
+    "message": "Import rules",
+    "description": "Opens a file chooser for a rules file."
+  },
+  "actionExportRules": {
+    "message": "Export rules",
+    "description": "Saves the rules as a JSON file."
+  },
+  "editorList": {
+    "message": "List",
+    "description": "Rule editor field."
+  },
+  "editorCookies": {
+    "message": "Cookies",
+    "description": "Rule editor field."
+  },
+  "editorSiteData": {
+    "message": "Site data",
+    "description": "Rule editor field."
+  },
+  "cookiesKeepAll": {
+    "message": "Keep all cookies",
+    "description": "Rule option."
+  },
+  "cookiesKeepOnly": {
+    "message": "Keep only these cookies",
+    "description": "Rule option."
+  },
+  "cookieNamesLabel": {
+    "message": "Cookie names to keep",
+    "description": "Field for named cookies."
+  },
+  "cookieNamesPlaceholder": {
+    "message": "sid, lang",
+    "description": "Placeholder for cookie names. Code."
+  },
+  "siteDataKeep": {
+    "message": "Keep",
+    "description": "Rule option for a site data type."
+  },
+  "siteDataClean": {
+    "message": "Clean",
+    "description": "Rule option for a site data type."
+  },
+  "noteLabel": {
+    "message": "Note",
+    "description": "Rule note field: free text for the user's own reference."
+  },
+  "actionSaveRule": {
+    "message": "Save rule",
+    "description": "Saves the rule being edited."
+  },
+  "announceRuleSaved": {
+    "message": "Rule saved.",
+    "description": "Screen reader announcement."
+  },
+  "confirmDeleteRuleTitle": {
+    "message": "Delete the rule $P1$?",
+    "description": "Confirmation title. $1 = pattern.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "confirmDeleteRulesTitleOne": {
+    "message": "Delete $P1$ rule?",
+    "description": "Confirmation title for bulk delete.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "confirmDeleteRulesTitleOther": {
+    "message": "Delete $P1$ rules?",
+    "description": "Confirmation title for bulk delete.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "confirmDeleteRulesBody": {
+    "message": "Sites these rules protect will be cleaned like any other site from the next cleanup.",
+    "description": "Confirmation body."
+  },
+  "actionDeleteRule": {
+    "message": "Delete rule",
+    "description": "Confirm button."
+  },
+  "actionDeleteRulesOne": {
+    "message": "Delete $P1$ rule",
+    "description": "Confirm button.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "actionDeleteRulesOther": {
+    "message": "Delete $P1$ rules",
+    "description": "Confirm button.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "announceRulesDeletedOne": {
+    "message": "Deleted $P1$ rule.",
+    "description": "Screen reader announcement.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "announceRulesDeletedOther": {
+    "message": "Deleted $P1$ rules.",
+    "description": "Screen reader announcement.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "importPreviewTitle": {
+    "message": "Import rules",
+    "description": "Import preview title."
+  },
+  "importSummary": {
+    "message": "$P1$ to add, $P2$ to replace, $P3$ that can't be imported. Nothing changes until you import.",
+    "description": "Import preview counts.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      },
+      "p3": {
+        "content": "$3"
+      }
+    }
+  },
+  "countRulesToAddOne": {
+    "message": "$P1$ rule",
+    "description": "Import preview count.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "countRulesToAddOther": {
+    "message": "$P1$ rules",
+    "description": "Import preview count.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "countRulesToReplaceOne": {
+    "message": "$P1$ rule",
+    "description": "Import preview count.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "countRulesToReplaceOther": {
+    "message": "$P1$ rules",
+    "description": "Import preview count.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "countRulesSkippedOne": {
+    "message": "$P1$ rule",
+    "description": "Import preview count.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "countRulesSkippedOther": {
+    "message": "$P1$ rules",
+    "description": "Import preview count.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "importContainersOne": {
+    "message": "The file has $P1$ rule from Firefox container lists, which Chrome doesn't have.",
+    "description": "Import preview: container lists.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "importContainersOther": {
+    "message": "The file has $P1$ rules from Firefox container lists, which Chrome doesn't have.",
+    "description": "Import preview: container lists.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "importContainersSkip": {
+    "message": "Skip container rules",
+    "description": "Import option."
+  },
+  "importContainersMerge": {
+    "message": "Add container rules to the main lists",
+    "description": "Import option."
+  },
+  "importWillReplace": {
+    "message": "These rules already exist and will be replaced:",
+    "description": "Import preview."
+  },
+  "importCannotImport": {
+    "message": "These can't be imported:",
+    "description": "Import preview."
+  },
+  "importSkipNotText": {
+    "message": "An entry without a pattern.",
+    "description": "Import skip reason."
+  },
+  "importSkipUnknownList": {
+    "message": "An entry on an unknown list ($P1$). Only WHITE (Keep) and GREY (Keep until restart) lists from Cookie AutoDelete files are supported.",
+    "description": "Import skip reason. Mentions the original's list names, which is allowed in the importer.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "importSkipIpRange": {
+    "message": "\"$P1$\" is an IP address range. Crumble doesn't support ranges; add the individual addresses instead.",
+    "description": "Import skip reason.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "importFailedTitle": {
+    "message": "This file can't be imported",
+    "description": "Import error title."
+  },
+  "importErrorTooLarge": {
+    "message": "The file is larger than 1 MB. Choose a rules export file from Crumble or Cookie AutoDelete.",
+    "description": "Import error."
+  },
+  "importErrorNotJson": {
+    "message": "The file isn't valid JSON. Choose a rules export file from Crumble or Cookie AutoDelete.",
+    "description": "Import error."
+  },
+  "importErrorWrongShape": {
+    "message": "The file isn't a rules export. Choose a file exported from Crumble or from Cookie AutoDelete's expressions export.",
+    "description": "Import error."
+  },
+  "importErrorTooManyRules": {
+    "message": "The file has more than 10,000 rules. Split it into smaller files and import them one at a time.",
+    "description": "Import error."
+  },
+  "importErrorEmpty": {
+    "message": "The file is empty. Choose a rules export file from Crumble or Cookie AutoDelete.",
+    "description": "Import error."
+  },
+  "actionChooseAnotherFile": {
+    "message": "Choose another file",
+    "description": "Import error button."
+  },
+  "actionClose": {
+    "message": "Close",
+    "description": "Closes a message."
+  },
+  "announceImported": {
+    "message": "Rules imported.",
+    "description": "Screen reader announcement."
+  },
+  "cleaningNote": {
+    "message": "A site is cleaned shortly after its last tab closes, unless it is on a list.",
+    "description": "Explanation at the top of Cleaning."
+  },
+  "setting_autoClean": {
+    "message": "Automatic cleaning",
+    "description": "Setting."
+  },
+  "setting_autoClean_help": {
+    "message": "Clean sites after you close them. When off, nothing is cleaned until you click Clean now.",
+    "description": "Setting explanation."
+  },
+  "setting_delay": {
+    "message": "Delay before cleaning",
+    "description": "Setting."
+  },
+  "setting_delay_help": {
+    "message": "Time to reopen a tab you closed by accident. Short delays can take up to 30 seconds.",
+    "description": "Setting explanation. The 30-second note is required by the PRD."
+  },
+  "unitSeconds": {
+    "message": "seconds",
+    "description": "Unit after the delay field."
+  },
+  "delayOutOfRange": {
+    "message": "The delay must be a whole number from 1 to 3600 seconds. The previous value is kept.",
+    "description": "Error for an invalid delay."
+  },
+  "setting_cleanOnDomainChange": {
+    "message": "Clean when a tab moves to another site",
+    "description": "Setting."
+  },
+  "setting_cleanOnDomainChange_help": {
+    "message": "Cleans the site you left in that tab after the delay. Coming back before then cancels it, so logins that pass through another site keep working.",
+    "description": "Setting explanation."
+  },
+  "setting_cleanDiscardedTabs": {
+    "message": "Clean discarded tabs",
+    "description": "Setting."
+  },
+  "setting_cleanDiscardedTabs_help": {
+    "message": "Tabs Chrome has unloaded to save memory don't count as open.",
+    "description": "Setting explanation."
+  },
+  "setting_cleanOnStartup": {
+    "message": "Clean when the browser starts",
+    "description": "Setting."
+  },
+  "setting_cleanOnStartup_help": {
+    "message": "Cleans everything not on the Keep list and not open, including Keep until restart sites.",
+    "description": "Setting explanation."
+  },
+  "setting_cleanOpenTabsOnStartup": {
+    "message": "Clean open tabs at startup",
+    "description": "Setting."
+  },
+  "setting_cleanOpenTabsOnStartup_help": {
+    "message": "Also cleans sites in tabs the browser restores when it starts.",
+    "description": "Setting explanation."
+  },
+  "setting_reloadAfterStartupClean": {
+    "message": "Reload restored tabs after the startup clean",
+    "description": "Setting."
+  },
+  "setting_reloadAfterStartupClean_help": {
+    "message": "Reloads each restored tab once, so pages stop using data that was just removed.",
+    "description": "Setting explanation."
+  },
+  "setting_keepEmbeddedOnKeptSites": {
+    "message": "Keep embedded cookies on kept sites",
+    "description": "Setting."
+  },
+  "setting_keepEmbeddedOnKeptSites_help": {
+    "message": "Cookies that embedded content (videos, widgets) set on a kept site are kept with it.",
+    "description": "Setting explanation."
+  },
+  "incognitoLabel": {
+    "message": "Incognito",
+    "description": "Settings row about incognito access."
+  },
+  "incognitoAllowed": {
+    "message": "Crumble is allowed in incognito and cleans incognito cookies with the same rules. Chrome also deletes all incognito data when the last incognito window closes.",
+    "description": "Incognito explanation when allowed."
+  },
+  "incognitoNotAllowed": {
+    "message": "Crumble doesn't run in incognito. To allow it, open chrome://extensions, choose Details under Crumble and turn on Allow in Incognito. Chrome deletes all incognito data when the last incognito window closes anyway.",
+    "description": "Incognito explanation when not allowed."
+  },
+  "siteDataEmbeddedNote": {
+    "message": "Data that embedded content (videos, widgets) stores on a site is kept or cleaned together with that site.",
+    "description": "Required note under Site data."
+  },
+  "type_localStorage": {
+    "message": "LocalStorage",
+    "description": "Site data type."
+  },
+  "type_indexedDB": {
+    "message": "IndexedDB",
+    "description": "Site data type."
+  },
+  "type_cacheStorage": {
+    "message": "Cache Storage",
+    "description": "Site data type."
+  },
+  "type_serviceWorkers": {
+    "message": "Service Workers",
+    "description": "Site data type."
+  },
+  "type_httpCache": {
+    "message": "Browser cache",
+    "description": "The browser's HTTP cache."
+  },
+  "siteData_localStorage_help": {
+    "message": "Small amounts of data sites save in your browser.",
+    "description": "Setting explanation."
+  },
+  "siteData_indexedDB_help": {
+    "message": "Larger databases sites keep in your browser, often for offline use.",
+    "description": "Setting explanation."
+  },
+  "siteData_cacheStorage_help": {
+    "message": "Files sites store for offline use and faster loading.",
+    "description": "Setting explanation."
+  },
+  "siteData_serviceWorkers_help": {
+    "message": "Background scripts sites install, for offline pages and notifications.",
+    "description": "Setting explanation."
+  },
+  "siteData_httpCache_help": {
+    "message": "Copies of pages and images. Clearing it makes sites load slower the next time.",
+    "description": "Setting explanation."
+  },
+  "offerClearTitleOne": {
+    "message": "Clear existing $P2$ for $P1$ site that isn't kept?",
+    "description": "One-time offer after turning a type on. $2 = type name.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      }
+    }
+  },
+  "offerClearTitleOther": {
+    "message": "Clear existing $P2$ for $P1$ sites that aren't kept?",
+    "description": "One-time offer after turning a type on. $2 = type name.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      }
+    }
+  },
+  "offerClearBody": {
+    "message": "This covers sites visited since Crumble was installed. Open sites are left alone. This can't be undone.",
+    "description": "Offer body."
+  },
+  "actionClearType": {
+    "message": "Clear $P1$",
+    "description": "Confirm button. $1 = type name.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "announceClearedTypeOne": {
+    "message": "Cleared $P2$ for $P1$ site.",
+    "description": "Screen reader announcement.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      }
+    }
+  },
+  "announceClearedTypeOther": {
+    "message": "Cleared $P2$ for $P1$ sites.",
+    "description": "Screen reader announcement.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      }
+    }
+  },
+  "logNote": {
+    "message": "The last 50 cleanups, with why each site was kept or cleaned. Cookie values are never stored here.",
+    "description": "Explanation at the top of Log."
+  },
+  "logEmpty": {
+    "message": "No cleanups yet.",
+    "description": "Empty log."
+  },
+  "logSummary": {
+    "message": "Cleaned $P1$, $P2$.",
+    "description": "Log row summary.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      }
+    }
+  },
+  "logNothingCleaned": {
+    "message": "Nothing to clean.",
+    "description": "Log row: cleanup removed nothing."
+  },
+  "logFailuresOne": {
+    "message": "$P1$ failed.",
+    "description": "Log row: failures.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "logFailuresOther": {
+    "message": "$P1$ failed.",
+    "description": "Log row: failures.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "logCleaned": {
+    "message": "Cleaned",
+    "description": "Log detail label."
+  },
+  "logKept": {
+    "message": "Kept",
+    "description": "Log detail label."
+  },
+  "logFailed": {
+    "message": "Not deleted",
+    "description": "Log detail label for failures."
+  },
+  "logNone": {
+    "message": "None",
+    "description": "Log detail: empty list."
+  },
+  "logSiteCookiesOne": {
+    "message": "$P1$ cookie",
+    "description": "Log: cookies cleaned for a site.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "logSiteCookiesOther": {
+    "message": "$P1$ cookies",
+    "description": "Log: cookies cleaned for a site.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "logSiteData": {
+    "message": ", and $P1$",
+    "description": "Log: site data types cleaned for a site, after the cookie count.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "logFailedCookie": {
+    "message": "Cookie $P1$ on $P2$ is still there after two attempts.",
+    "description": "Log failure line.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      },
+      "p2": {
+        "content": "$2"
+      }
+    }
+  },
+  "logFailedSiteData": {
+    "message": "Site data for $P1$ couldn't be cleared.",
+    "description": "Log failure line.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "reason_keepList": {
+    "message": "On Keep list",
+    "description": "Log reason."
+  },
+  "reason_keepEmbedded": {
+    "message": "Embedded on a kept site",
+    "description": "Log reason."
+  },
+  "reason_restartList": {
+    "message": "Kept until restart",
+    "description": "Log reason."
+  },
+  "reason_open": {
+    "message": "Open in a tab",
+    "description": "Log reason."
+  },
+  "trigger_tabClose": {
+    "message": "Tab closed",
+    "description": "Log trigger."
+  },
+  "trigger_domainChange": {
+    "message": "Tab moved to another site",
+    "description": "Log trigger."
+  },
+  "trigger_startup": {
+    "message": "Browser started",
+    "description": "Log trigger."
+  },
+  "trigger_startup_open": {
+    "message": "Browser started, open tabs included",
+    "description": "Log trigger."
+  },
+  "trigger_manual": {
+    "message": "Clean now",
+    "description": "Log trigger."
+  },
+  "trigger_manual_open": {
+    "message": "Clean, including open tabs",
+    "description": "Log trigger."
+  },
+  "trigger_site": {
+    "message": "Clean this site now",
+    "description": "Log trigger."
+  },
+  "trigger_site_open": {
+    "message": "Clean this site now",
+    "description": "Log trigger."
+  },
+  "trigger_tabClose_open": {
+    "message": "Tab closed",
+    "description": "Log trigger."
+  },
+  "trigger_domainChange_open": {
+    "message": "Tab moved to another site",
+    "description": "Log trigger."
+  },
+  "confirmClearLogTitle": {
+    "message": "Clear the cleanup log?",
+    "description": "Confirmation title."
+  },
+  "confirmClearLogBody": {
+    "message": "This removes the record of past cleanups. It doesn't restore anything.",
+    "description": "Confirmation body."
+  },
+  "actionClearLog": {
+    "message": "Clear log",
+    "description": "Button."
+  },
+  "display_badge": {
+    "message": "Cookie count on the toolbar icon",
+    "description": "Setting."
+  },
+  "display_badge_help": {
+    "message": "Shows how many cookies the current site has, embedded ones included.",
+    "description": "Setting explanation."
+  },
+  "display_iconByList": {
+    "message": "Show the site's list in the toolbar icon",
+    "description": "Setting."
+  },
+  "display_iconByList_help": {
+    "message": "Full square: kept. Half square: kept until restart. Empty square: will be cleaned.",
+    "description": "Setting explanation."
+  },
+  "display_notifyAuto": {
+    "message": "Notify after automatic cleanups",
+    "description": "Setting."
+  },
+  "display_notifyAuto_help": {
+    "message": "A short notification each time sites are cleaned on their own.",
+    "description": "Setting explanation."
+  },
+  "display_notifyManual": {
+    "message": "Notify after manual cleanups",
+    "description": "Setting."
+  },
+  "display_notifyManual_help": {
+    "message": "A short notification after Clean now and Clean this site now.",
+    "description": "Setting explanation."
+  },
+  "display_contextMenus": {
+    "message": "Right-click menu entries",
+    "description": "Setting."
+  },
+  "display_contextMenus_help": {
+    "message": "Adds Keep this site, Keep this site until restart and Clean this site now to the page and toolbar menus.",
+    "description": "Setting explanation."
+  },
+  "shortcutLabel": {
+    "message": "Keyboard shortcut for Clean now",
+    "description": "Settings row."
+  },
+  "shortcutHelp": {
+    "message": "There is no shortcut until you choose one in Chrome's shortcut settings.",
+    "description": "Settings row explanation."
+  },
+  "actionSetShortcut": {
+    "message": "Choose a shortcut",
+    "description": "Opens chrome://extensions/shortcuts."
+  },
+  "aboutVersion": {
+    "message": "Version",
+    "description": "About row."
+  },
+  "aboutChangelog": {
+    "message": "Changelog",
+    "description": "About link."
+  },
+  "aboutPrivacy": {
+    "message": "Privacy",
+    "description": "About row."
+  },
+  "aboutPrivacyText": {
+    "message": "Crumble collects nothing and sends nothing. It has no account, no analytics and no servers; your rules and log stay in this browser.",
+    "description": "About privacy statement."
+  },
+  "aboutPrivacyPolicy": {
+    "message": "Privacy policy",
+    "description": "About link."
+  },
+  "aboutReport": {
+    "message": "Report a problem",
+    "description": "About row and dialog title."
+  },
+  "aboutReportText": {
+    "message": "Opens a prefilled report with your browser version and settings, but no sites, rules or cookie data. You see and edit everything before sending.",
+    "description": "About row explanation."
+  },
+  "actionReportProblem": {
+    "message": "Report a problem",
+    "description": "Button."
+  },
+  "reportCopyText": {
+    "message": "The project's issue page isn't set up yet. Copy this report and send it to the developer.",
+    "description": "Shown while the repository URL is a placeholder."
+  },
+  "actionCopy": {
+    "message": "Copy report",
+    "description": "Copies the report text."
+  },
+  "reportVersion": {
+    "message": "Crumble version",
+    "description": "Report field."
+  },
+  "reportBrowser": {
+    "message": "Browser",
+    "description": "Report field."
+  },
+  "reportSettings": {
+    "message": "Settings",
+    "description": "Report field."
+  },
+  "reportLastCleanups": {
+    "message": "Last 3 cleanups (counts only)",
+    "description": "Report field."
+  },
+  "reportWhatHappened": {
+    "message": "What happened",
+    "description": "Report field for the user's description."
+  },
+  "aboutLicence": {
+    "message": "Licence",
+    "description": "About row."
+  },
+  "aboutLicenceText": {
+    "message": "Crumble is open source under the MIT licence. It is an independent project, not affiliated with Cookie AutoDelete, and contains none of its code.",
+    "description": "About licence statement."
+  },
+  "welcomeTitle": {
+    "message": "Welcome to Crumble",
+    "description": "Welcome page heading."
+  },
+  "welcomeLine1": {
+    "message": "Crumble deletes cookies and site data shortly after you close a site's last tab.",
+    "description": "Welcome line 1."
+  },
+  "welcomeLine2": {
+    "message": "Sites you choose to keep stay logged in.",
+    "description": "Welcome line 2."
+  },
+  "welcomeLine3": {
+    "message": "Nothing is cleaned until you finish these three steps, and nothing leaves your browser.",
+    "description": "Welcome line 3."
+  },
+  "setupStep1Title": {
+    "message": "Sites to keep you logged in",
+    "description": "Setup step one."
+  },
+  "setupStep1Help": {
+    "message": "Ticked sites go on the Keep list and are never cleaned automatically. You can change this any time.",
+    "description": "Setup step one explanation."
+  },
+  "setupOpenNow": {
+    "message": "Open now",
+    "description": "Setup group heading."
+  },
+  "setupMostCookies": {
+    "message": "Sites with the most cookies",
+    "description": "Setup group heading."
+  },
+  "setupNoOpenSites": {
+    "message": "No websites are open in other tabs.",
+    "description": "Setup: no open sites."
+  },
+  "setupAddLabel": {
+    "message": "Add a site",
+    "description": "Setup add field label."
+  },
+  "setupAddPlaceholder": {
+    "message": "example.com",
+    "description": "Setup add field placeholder. Code."
+  },
+  "actionAddSite": {
+    "message": "Add site",
+    "description": "Setup: add the typed site to the ticked list."
+  },
+  "actionKeepSelectedOne": {
+    "message": "Keep $P1$ site",
+    "description": "Setup step one button.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "actionKeepSelectedOther": {
+    "message": "Keep $P1$ sites",
+    "description": "Setup step one button. $1 may be 0.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "setupStep1DoneOne": {
+    "message": "$P1$ site added to Keep.",
+    "description": "Setup step one, done.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "setupStep1DoneOther": {
+    "message": "$P1$ sites added to Keep.",
+    "description": "Setup step one, done.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "setupStep2Title": {
+    "message": "Coming from Cookie AutoDelete?",
+    "description": "Setup step two."
+  },
+  "setupStep2Help": {
+    "message": "Import the expressions file you exported from Cookie AutoDelete. Its whitelist becomes Keep and its greylist becomes Keep until restart.",
+    "description": "Setup step two explanation. The importer may name the original's lists."
+  },
+  "actionImportFromCad": {
+    "message": "Import from Cookie AutoDelete",
+    "description": "Setup step two button."
+  },
+  "actionSkipImport": {
+    "message": "Skip this step",
+    "description": "Setup step two button."
+  },
+  "actionContinue": {
+    "message": "Continue to the last step",
+    "description": "Setup step two button after importing."
+  },
+  "setupImportedOne": {
+    "message": "Imported $P1$ rule.",
+    "description": "Setup step two result.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "setupImportedOther": {
+    "message": "Imported $P1$ rules.",
+    "description": "Setup step two result.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "setupStep2Skipped": {
+    "message": "Skipped.",
+    "description": "Setup step two, skipped."
+  },
+  "setupStep3Title": {
+    "message": "Start cleaning",
+    "description": "Setup step three."
+  },
+  "setupStep3Help": {
+    "message": "Automatic cleaning starts now and needs no restart. Manual mode cleans only when you click Clean now.",
+    "description": "Setup step three explanation."
+  },
+  "actionStartAutomatic": {
+    "message": "Start cleaning automatically",
+    "description": "Setup choice."
+  },
+  "actionCleanManually": {
+    "message": "I'll clean manually for now",
+    "description": "Setup choice."
+  },
+  "setupFinishedAutomatic": {
+    "message": "Automatic cleaning is on. Sites you haven't kept are cleaned shortly after you close them.",
+    "description": "Setup finished."
+  },
+  "setupFinishedManual": {
+    "message": "Setup is done. Nothing is cleaned until you click Clean now in the toolbar popup.",
+    "description": "Setup finished."
+  },
+  "setupFinishedHelp": {
+    "message": "Use the Crumble icon in the toolbar to keep a site or clean now. You can close this tab.",
+    "description": "Setup finished hint."
+  },
+  "timeJustNow": {
+    "message": "just now",
+    "description": "Relative time for the last few seconds, as in 'Cleaned 3 sites, 4 cookies, just now.'"
+  },
+  "actionSkipKeep": {
+    "message": "Continue without keeping sites",
+    "description": "Setup step one button when no site is ticked."
+  },
+  "setupStep1None": {
+    "message": "No sites added. You can keep sites later from the toolbar popup.",
+    "description": "Setup step one, done with nothing ticked."
+  },
+  "ruleSiteDataLabel": {
+    "message": "$P1$ for this rule",
+    "description": "Accessible name of a rule's site data choice. $1 = type name.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Allow the local test server to use HTTPS port 443
+        run: sudo setcap cap_net_bind_service=+ep "$(readlink -f "$(command -v node)")"
+      - name: Run all checks
+        run: xvfb-run -a npm test
+      - name: Build release package
+        run: npm run package

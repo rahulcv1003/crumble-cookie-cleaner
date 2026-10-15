@@ -1,0 +1,375 @@
+{
+  "iframeDocumentCookie": "part=1; plain=1",
+  "b_getAll_noKey_all": [
+    {
+      "domain": "widget.test",
+      "hostOnly": true,
+      "httpOnly": false,
+      "name": "plain",
+      "path": "/",
+      "sameSite": "no_restriction",
+      "secure": true,
+      "session": true,
+      "storeId": "0",
+      "value": "1"
+    }
+  ],
+  "b_getAll_noKey_domainWidget": [
+    {
+      "domain": "widget.test",
+      "hostOnly": true,
+      "httpOnly": false,
+      "name": "plain",
+      "path": "/",
+      "sameSite": "no_restriction",
+      "secure": true,
+      "session": true,
+      "storeId": "0",
+      "value": "1"
+    }
+  ],
+  "c_getAll_partitionKeyEmpty_all": [
+    {
+      "domain": "widget.test",
+      "hostOnly": true,
+      "httpOnly": false,
+      "name": "part",
+      "partitionKey": {
+        "hasCrossSiteAncestor": true,
+        "topLevelSite": "https://b.test"
+      },
+      "path": "/",
+      "sameSite": "no_restriction",
+      "secure": true,
+      "session": true,
+      "storeId": "0",
+      "value": "1"
+    },
+    {
+      "domain": "widget.test",
+      "hostOnly": true,
+      "httpOnly": false,
+      "name": "plain",
+      "path": "/",
+      "sameSite": "no_restriction",
+      "secure": true,
+      "session": true,
+      "storeId": "0",
+      "value": "1"
+    }
+  ],
+  "c_partCookieFull": {
+    "domain": "widget.test",
+    "hostOnly": true,
+    "httpOnly": false,
+    "name": "part",
+    "partitionKey": {
+      "hasCrossSiteAncestor": true,
+      "topLevelSite": "https://b.test"
+    },
+    "path": "/",
+    "sameSite": "no_restriction",
+    "secure": true,
+    "session": true,
+    "storeId": "0",
+    "value": "1"
+  },
+  "d_remove_noKey": {
+    "result": {
+      "name": "part",
+      "storeId": "0",
+      "url": "https://widget.test/"
+    }
+  },
+  "d_after": [
+    {
+      "domain": "widget.test",
+      "hostOnly": true,
+      "httpOnly": false,
+      "name": "part",
+      "partitionKey": {
+        "hasCrossSiteAncestor": true,
+        "topLevelSite": "https://b.test"
+      },
+      "path": "/",
+      "sameSite": "no_restriction",
+      "secure": true,
+      "session": true,
+      "storeId": "0",
+      "value": "1"
+    },
+    {
+      "domain": "widget.test",
+      "hostOnly": true,
+      "httpOnly": false,
+      "name": "plain",
+      "path": "/",
+      "sameSite": "no_restriction",
+      "secure": true,
+      "session": true,
+      "storeId": "0",
+      "value": "1"
+    }
+  ],
+  "e_remove_withKey": {
+    "result": {
+      "name": "part",
+      "partitionKey": {
+        "hasCrossSiteAncestor": true,
+        "topLevelSite": "https://b.test"
+      },
+      "storeId": "0",
+      "url": "https://widget.test/"
+    }
+  },
+  "e_after": [
+    {
+      "domain": "widget.test",
+      "hostOnly": true,
+      "httpOnly": false,
+      "name": "plain",
+      "path": "/",
+      "sameSite": "no_restriction",
+      "secure": true,
+      "session": true,
+      "storeId": "0",
+      "value": "1"
+    }
+  ],
+  "f_getAll_partitionKeyEmpty_after_a": [
+    {
+      "domain": "widget.test",
+      "hostOnly": true,
+      "httpOnly": false,
+      "name": "plain",
+      "path": "/",
+      "sameSite": "no_restriction",
+      "secure": true,
+      "session": true,
+      "storeId": "0",
+      "value": "1"
+    },
+    {
+      "domain": "a.test",
+      "hostOnly": true,
+      "httpOnly": false,
+      "name": "first",
+      "path": "/",
+      "sameSite": "lax",
+      "secure": true,
+      "session": true,
+      "storeId": "0",
+      "value": "1"
+    },
+    {
+      "domain": "tracker.test",
+      "hostOnly": true,
+      "httpOnly": false,
+      "name": "trk",
+      "path": "/",
+      "sameSite": "no_restriction",
+      "secure": true,
+      "session": true,
+      "storeId": "0",
+      "value": "1"
+    }
+  ],
+  "f_getAll_noKey_after_a": [
+    {
+      "domain": "widget.test",
+      "hostOnly": true,
+      "httpOnly": false,
+      "name": "plain",
+      "path": "/",
+      "sameSite": "no_restriction",
+      "secure": true,
+      "session": true,
+      "storeId": "0",
+      "value": "1"
+    },
+    {
+      "domain": "a.test",
+      "hostOnly": true,
+      "httpOnly": false,
+      "name": "first",
+      "path": "/",
+      "sameSite": "lax",
+      "secure": true,
+      "session": true,
+      "storeId": "0",
+      "value": "1"
+    },
+    {
+      "domain": "tracker.test",
+      "hostOnly": true,
+      "httpOnly": false,
+      "name": "trk",
+      "path": "/",
+      "sameSite": "no_restriction",
+      "secure": true,
+      "session": true,
+      "storeId": "0",
+      "value": "1"
+    }
+  ],
+  "g_setDetails": {
+    "url": "https://widget.test/",
+    "name": "part",
+    "value": "1",
+    "path": "/",
+    "secure": true,
+    "httpOnly": false,
+    "sameSite": "no_restriction",
+    "partitionKey": {
+      "hasCrossSiteAncestor": true,
+      "topLevelSite": "https://b.test"
+    }
+  },
+  "g_set_result": {
+    "result": {
+      "domain": "widget.test",
+      "hostOnly": true,
+      "httpOnly": false,
+      "name": "part",
+      "partitionKey": {
+        "hasCrossSiteAncestor": true,
+        "topLevelSite": "https://b.test"
+      },
+      "path": "/",
+      "sameSite": "no_restriction",
+      "secure": true,
+      "session": true,
+      "storeId": "0",
+      "value": "1"
+    }
+  },
+  "g_after": [
+    {
+      "domain": "widget.test",
+      "hostOnly": true,
+      "httpOnly": false,
+      "name": "plain",
+      "path": "/",
+      "sameSite": "no_restriction",
+      "secure": true,
+      "session": true,
+      "storeId": "0",
+      "value": "1"
+    },
+    {
+      "domain": "widget.test",
+      "hostOnly": true,
+      "httpOnly": false,
+      "name": "part",
+      "partitionKey": {
+        "hasCrossSiteAncestor": true,
+        "topLevelSite": "https://b.test"
+      },
+      "path": "/",
+      "sameSite": "no_restriction",
+      "secure": true,
+      "session": true,
+      "storeId": "0",
+      "value": "1"
+    }
+  ],
+  "g_iframeDocumentCookie_after_restore": "plain=1; part=1",
+  "g_extra_set_crossSiteAncestorTrue": {
+    "result": {
+      "domain": "widget.test",
+      "hostOnly": true,
+      "httpOnly": false,
+      "name": "xs",
+      "partitionKey": {
+        "hasCrossSiteAncestor": true,
+        "topLevelSite": "https://b.test"
+      },
+      "path": "/",
+      "sameSite": "no_restriction",
+      "secure": true,
+      "session": true,
+      "storeId": "0",
+      "value": "1"
+    }
+  },
+  "g_extra_set_topLevelOnly": {
+    "result": {
+      "domain": "widget.test",
+      "hostOnly": true,
+      "httpOnly": false,
+      "name": "tlo",
+      "partitionKey": {
+        "hasCrossSiteAncestor": true,
+        "topLevelSite": "https://b.test"
+      },
+      "path": "/",
+      "sameSite": "no_restriction",
+      "secure": true,
+      "session": true,
+      "storeId": "0",
+      "value": "1"
+    }
+  },
+  "g_extra_after": [
+    {
+      "domain": "widget.test",
+      "hostOnly": true,
+      "httpOnly": false,
+      "name": "plain",
+      "path": "/",
+      "sameSite": "no_restriction",
+      "secure": true,
+      "session": true,
+      "storeId": "0",
+      "value": "1"
+    },
+    {
+      "domain": "widget.test",
+      "hostOnly": true,
+      "httpOnly": false,
+      "name": "part",
+      "partitionKey": {
+        "hasCrossSiteAncestor": true,
+        "topLevelSite": "https://b.test"
+      },
+      "path": "/",
+      "sameSite": "no_restriction",
+      "secure": true,
+      "session": true,
+      "storeId": "0",
+      "value": "1"
+    },
+    {
+      "domain": "widget.test",
+      "hostOnly": true,
+      "httpOnly": false,
+      "name": "xs",
+      "partitionKey": {
+        "hasCrossSiteAncestor": true,
+        "topLevelSite": "https://b.test"
+      },
+      "path": "/",
+      "sameSite": "no_restriction",
+      "secure": true,
+      "session": true,
+      "storeId": "0",
+      "value": "1"
+    },
+    {
+      "domain": "widget.test",
+      "hostOnly": true,
+      "httpOnly": false,
+      "name": "tlo",
+      "partitionKey": {
+        "hasCrossSiteAncestor": true,
+        "topLevelSite": "https://b.test"
+      },
+      "path": "/",
+      "sameSite": "no_restriction",
+      "secure": true,
+      "session": true,
+      "storeId": "0",
+      "value": "1"
+    }
+  ]
+}

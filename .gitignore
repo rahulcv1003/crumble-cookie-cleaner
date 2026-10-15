@@ -1,0 +1,14 @@
+node_modules/
+dist/
+dist-test/
+test-results/
+playwright-report/
+tests/harness/profiles/
+release/
+dist-site/
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.*
+!.env.example

@@ -1,0 +1,26 @@
+body { width: 340px; font-size: 13px; }
+header { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 14px 8px; border-bottom: 1px solid var(--rule); }
+header .name { margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.01em; color: var(--muted); }
+section { padding: 12px 14px; border-bottom: 1px solid var(--rule); }
+section:last-child { border-bottom: 0; }
+
+/* The one bold element: the current site and its status mark. */
+.site { padding: 16px 14px 14px; }
+.site .head { display: flex; gap: 10px; align-items: center; }
+.site .head .mark { width: 26px; height: 26px; }
+.site .label { font-size: 20px; font-weight: 600; line-height: 1.15; overflow-wrap: anywhere; }
+.site .status { margin: 6px 0 0 36px; }
+.site .status strong { font-weight: 600; }
+.site .status.keep strong { color: var(--keep); }
+.site .status.restart strong { color: var(--restart); }
+.site .actions { display: flex; flex-wrap: wrap; gap: 6px 8px; align-items: center; margin: 12px 0 0 36px; }
+
+.row { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.row label { flex: 1; cursor: pointer; }
+.buttons { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.note { margin: 0; }
+.confirm { margin-top: 10px; padding: 10px; border: 1px solid var(--alert); border-radius: var(--radius); }
+.confirm p { margin: 0 0 8px; }
+.last p { margin: 0; }
+.last .links { display: flex; gap: 14px; margin-top: 6px; }
+progress { width: 100%; height: 6px; margin-top: 6px; accent-color: var(--signal); }

@@ -1,0 +1,8 @@
+{
+  "manifest_version": 3,
+  "name": "Crumble spike harness (throwaway)",
+  "version": "0.0.1",
+  "permissions": ["cookies", "browsingData", "storage", "alarms"],
+  "host_permissions": ["<all_urls>"],
+  "background": { "service_worker": "sw.js" }
+}

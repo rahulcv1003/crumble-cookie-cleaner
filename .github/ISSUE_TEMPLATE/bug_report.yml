@@ -1,0 +1,24 @@
+name: Report a problem
+description: Something Crumble did, or didn't do, that you didn't expect.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. The text below was filled in by Crumble's "Report a problem" button:
+        extension version, browser, your settings (no rules or sites), and the last 3 cleanups as counts only.
+        Please remove anything you don't want to share.
+  - type: textarea
+    id: body
+    attributes:
+      label: Report
+      description: Prefilled by the extension. Add what happened, what you expected, and the steps.
+    validations:
+      required: true
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser
+      options: [Chrome, Edge, Brave, Vivaldi, Opera, Other Chromium browser]
+    validations:
+      required: true

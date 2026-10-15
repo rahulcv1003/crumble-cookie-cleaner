@@ -1,0 +1,20 @@
+title: Permissions explained: Crumble
+description: Why Crumble asks to read and change data on all websites, and what each permission is used for, in plain words.
+path: permissions.html
+jsonld:
+---
+<h1>Permissions explained</h1>
+<p class="lede">When you install Crumble, Chrome shows two warnings: "Read and change all your data on all websites" and "Display notifications". Here is why.</p>
+<table>
+<thead><tr><th>Permission</th><th>What Crumble uses it for</th></tr></thead>
+<tbody>
+<tr><td>Access to all websites</td><td>Chrome only lets an extension read and delete the cookies of sites it has access to. To clean any site you leave, Crumble needs access to all of them. The same access lets it see which sites your tabs are on, so it knows what is still open. It never reads or changes page content, injects nothing into pages, and doesn't ask for your history.</td></tr>
+<tr><td>Cookies</td><td>Read and delete cookies, including third-party and partitioned ones, and restore them when you click Undo.</td></tr>
+<tr><td>Browsing data</td><td>Clear LocalStorage, IndexedDB, Cache Storage and Service Workers for sites you've left.</td></tr>
+<tr><td>Storage</td><td>Save your rules, settings and cleanup log in your browser.</td></tr>
+<tr><td>Alarms</td><td>Run a scheduled cleanup on time even after Chrome pauses the extension in the background.</td></tr>
+<tr><td>Notifications</td><td>Show a short message after a cleanup, if you turn that on.</td></tr>
+<tr><td>Context menus</td><td>Add "Keep this site" and similar entries to the right-click menu, if you turn that on.</td></tr>
+</tbody>
+</table>
+<p>The source code is public, so anyone can check that Crumble does only this: <a href="https://github.com/{{GITHUB_USER}}/{{REPO}}">github.com/{{GITHUB_USER}}/{{REPO}}</a>.</p>

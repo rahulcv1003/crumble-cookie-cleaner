@@ -1,0 +1,30 @@
+{
+  "default": [
+    {
+      "expression": "/mozilla/,/example.com/",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cookieNames": ["_gid", "taarId"],
+      "cleanAllCookies": false,
+      "cleanLocalStorage": false,
+      "id": "example-id" // Comments like this one appear in the documentation's example; they are removed before parsing.
+    },
+    {
+      "expression": "github.com",
+      "listType": "GREY",
+      "storeId": "default"
+    },
+    {
+      "expression": "example.com",
+      "listType": "WHITE",
+      "storeId": "default"
+    }
+  ],
+  "firefox-container-1": [
+    {
+      "expression": "example.com",
+      "listType": "WHITE",
+      "storeId": "firefox-container-1"
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+/* Shared design tokens (docs/DESIGN.md). Light and dark are designed separately. */
+:root {
+  color-scheme: light dark;
+  --paper: #f3f4f1;
+  --paper-raised: #fbfbf9;
+  --ink: #1d2126;
+  --rule: #c8cdd0;
+  --keep: #1e6b5c;
+  --restart: #8a5a00;
+  --clean: #5b6168;
+  --muted: #5b6168;
+  --signal: #2a4e86;
+  --signal-ink: #ffffff;
+  --alert: #9b2c2c;
+  --focus: #2a4e86;
+  --field: #ffffff;
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+  --radius: 3px;
+  --speed: 120ms;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #1b1f22;
+    --paper-raised: #22272b;
+    --ink: #e3e5e1;
+    --rule: #3a4146;
+    --keep: #6cc3ab;
+    --restart: #d9ae4e;
+    --clean: #a7adb3;
+    --muted: #a7adb3;
+    --signal: #93b3ea;
+    --signal-ink: #10161f;
+    --alert: #f09a9a;
+    --focus: #93b3ea;
+    --field: #15191c;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  :root { --speed: 0ms; }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font); line-height: 1.4; }
+.num { font-variant-numeric: tabular-nums; }
+.code { font-family: var(--mono); font-size: 0.95em; }
+.muted { color: var(--muted); }
+.hidden { display: none !important; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+a, .link {
+  color: var(--signal); text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 1px;
+  background: none; border: 0; padding: 0; font: inherit; cursor: pointer;
+}
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+button.btn {
+  font: inherit; font-size: 0.95em; color: var(--ink); background: transparent; cursor: pointer;
+  border: 1px solid var(--rule); border-radius: var(--radius); padding: 5px 10px; line-height: 1.3;
+  transition: background-color var(--speed), border-color var(--speed);
+}
+button.btn:hover { border-color: var(--ink); }
+button.btn.primary { background: var(--signal); border-color: var(--signal); color: var(--signal-ink); }
+button.btn.danger { border-color: var(--alert); color: var(--alert); }
+button.btn.danger.primary { background: var(--alert); color: var(--paper); }
+button.btn:disabled { opacity: 0.55; cursor: default; }
+
+input[type="text"], input[type="search"], input[type="number"], select, textarea {
+  font: inherit; color: var(--ink); background: var(--field); border: 1px solid var(--rule); border-radius: var(--radius); padding: 5px 7px;
+}
+
+/* Switch: a native checkbox with role="switch", drawn as a two-position slot. */
+input.switch {
+  appearance: none; width: 34px; height: 18px; border-radius: 9px; border: 1.5px solid var(--clean); position: relative; cursor: pointer;
+  margin: 0; flex: none; background: transparent; transition: background-color var(--speed), border-color var(--speed);
+}
+input.switch::after {
+  content: ""; position: absolute; top: 2px; left: 2px; width: 11px; height: 11px; border-radius: 50%; background: var(--clean);
+  transition: transform var(--speed), background-color var(--speed);
+}
+input.switch:checked { background: var(--keep); border-color: var(--keep); }
+input.switch:checked::after { transform: translateX(16px); background: var(--paper); }
+
+.mark { width: 22px; height: 22px; flex: none; }
+.mark .frame { fill: var(--paper); stroke-width: 2.4; }
+.mark.keep .frame, .mark.keep .fill { stroke: var(--keep); fill: var(--keep); }
+.mark.restart .frame { stroke: var(--restart); }
+.mark.restart .fill { fill: var(--restart); }
+.mark.clean .frame { stroke: var(--clean); }
+.mark.clean .stroke { stroke: var(--clean); stroke-width: 2.4; stroke-linecap: round; }
+.mark.none .frame { stroke: var(--clean); stroke-dasharray: 2.6 2.4; }

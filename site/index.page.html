@@ -1,0 +1,25 @@
+title: Crumble: delete cookies when you close the tab
+description: Crumble deletes cookies and site data when you close a tab, keeps the sites you trust, and imports your Cookie AutoDelete lists. For Chrome and Edge.
+path:
+jsonld: index
+---
+<h1>Delete cookies when you close the tab</h1>
+<p class="lede">Crumble deletes a site's cookies and site data shortly after you close its last tab. The sites you choose to keep stay logged in.</p>
+<ul class="points">
+  <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M6.5 17.5 17.5 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span><strong>Close a tab, and the site forgets you.</strong> After a short delay (15 seconds by default) its cookies, LocalStorage, IndexedDB, Cache Storage and Service Workers are deleted, including third-party and partitioned cookies.</span></li>
+  <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" fill="currentColor" stroke="currentColor" stroke-width="2"/></svg><span><strong>Keep the sites you trust.</strong> Sites on Keep are never cleaned. Sites on Keep until restart stay until the browser next starts.</span></li>
+  <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 12H21V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z" fill="currentColor"/></svg><span><strong>Nothing leaves your browser.</strong> No account, no analytics, no servers. Undo restores the last cleanup's cookies for 2 minutes.</span></li>
+</ul>
+<div class="install">
+  <a class="button" href="https://chromewebstore.google.com/detail/{{EXTENSION_ID}}">Add to Chrome</a>
+  <a class="button secondary" href="https://microsoftedge.microsoft.com/addons/detail/{{EDGE_ID}}">Get it for Edge</a>
+</div>
+<p class="note">Also works in Brave, Vivaldi and Opera from the Chrome Web Store.</p>
+<figure>
+  <img src="popup.webp" width="680" height="{{POPUP_H}}" alt="The Crumble popup on a site that will be cleaned: the site name, the status 'Will be cleaned after you close it' with its cookie count, and buttons to keep the site or clean it now.">
+  <figcaption>The popup tells you what will happen to the site you're on.</figcaption>
+</figure>
+<h2>Questions</h2>
+<div class="faq">
+{{FAQ}}
+</div>

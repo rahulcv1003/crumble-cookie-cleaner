@@ -1,0 +1,119 @@
+{
+  "machine": {
+    "cpus": 2,
+    "model": "Intel(R) Xeon(R) Processor @ 2.10GHz",
+    "memGB": 7.8
+  },
+  "sameRegistrableDomain": [
+    {
+      "seed": {
+        "ok": 5000,
+        "fail": 0,
+        "ms": 1829,
+        "existingAfterSeed": 164
+      },
+      "timing": {
+        "totalCookiesRead": 164,
+        "targetCount": 164,
+        "getAllMs": 2.4,
+        "removeMs": 46.3,
+        "removed": 164,
+        "nulls": 0,
+        "errors": 0,
+        "remainingAfter": 0
+      }
+    },
+    {
+      "seed": {
+        "ok": 5000,
+        "fail": 0,
+        "ms": 1756,
+        "existingAfterSeed": 164
+      },
+      "timing": {
+        "totalCookiesRead": 164,
+        "targetCount": 164,
+        "getAllMs": 2.6,
+        "removeMs": 62.1,
+        "removed": 164,
+        "nulls": 0,
+        "errors": 0,
+        "remainingAfter": 0
+      }
+    },
+    {
+      "seed": {
+        "ok": 5000,
+        "fail": 0,
+        "ms": 1809,
+        "existingAfterSeed": 164
+      },
+      "timing": {
+        "totalCookiesRead": 164,
+        "targetCount": 164,
+        "getAllMs": 2.4,
+        "removeMs": 45.4,
+        "removed": 164,
+        "nulls": 0,
+        "errors": 0,
+        "remainingAfter": 0
+      }
+    }
+  ],
+  "distinctRegistrableDomains": [
+    {
+      "seed": {
+        "ok": 5000,
+        "fail": 0,
+        "ms": 907,
+        "existingAfterSeed": 3194
+      },
+      "timing": {
+        "totalCookiesRead": 3194,
+        "targetCount": 3194,
+        "getAllMs": 43.8,
+        "removeMs": 6305.4,
+        "removed": 3194,
+        "nulls": 0,
+        "errors": 0,
+        "remainingAfter": 0
+      }
+    },
+    {
+      "seed": {
+        "ok": 5000,
+        "fail": 0,
+        "ms": 813,
+        "existingAfterSeed": 3194
+      },
+      "timing": {
+        "totalCookiesRead": 3194,
+        "targetCount": 3194,
+        "getAllMs": 43,
+        "removeMs": 5797.1,
+        "removed": 3194,
+        "nulls": 0,
+        "errors": 0,
+        "remainingAfter": 0
+      }
+    },
+    {
+      "seed": {
+        "ok": 5000,
+        "fail": 0,
+        "ms": 769,
+        "existingAfterSeed": 3194
+      },
+      "timing": {
+        "totalCookiesRead": 3194,
+        "targetCount": 3194,
+        "getAllMs": 39.5,
+        "removeMs": 6461.5,
+        "removed": 3194,
+        "nulls": 0,
+        "errors": 0,
+        "remainingAfter": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+title: What happened to Cookie AutoDelete on Chrome?
+description: Why Cookie AutoDelete left the Chrome Web Store, how Crumble does the same job under Manifest V3, and how to import your Cookie AutoDelete lists.
+path: what-happened-to-cookie-autodelete.html
+jsonld: faq
+---
+<h1>What happened to Cookie AutoDelete on Chrome?</h1>
+<p class="lede">Cookie AutoDelete was a well-loved open-source extension that deleted a site's cookies when you closed its tab. Its Chrome listing was removed when Chrome ended support for Manifest V2 extensions.</p>
+<h2>Why it stopped working</h2>
+<p>Cookie AutoDelete was built on a background page that stayed alive for the whole browser session. Manifest V3 replaced background pages with service workers, which Chrome stops after about 30 seconds without activity. A straight port loses its timers and its list of open tabs, so cleanups silently stop happening. The extension's maintainers did not publish a Manifest V3 version to the Chrome Web Store.</p>
+<h2>What Crumble keeps the same</h2>
+<ul>
+  <li>Cleaning when you close a tab, when a tab moves to another site (optional), and when the browser starts.</li>
+  <li>A delay before cleaning, 15 seconds by default.</li>
+  <li>Two lists: <strong>Keep</strong> (the old whitelist) and <strong>Keep until restart</strong> (the old greylist).</li>
+  <li>The same rules: <code>example.com</code>, <code>*.example.com</code>, wildcards and <code>/regular expressions/</code>, several at once separated by commas.</li>
+  <li>Keeping only named cookies for a site, and choosing which kinds of site data to clean.</li>
+</ul>
+<h2>What Crumble adds</h2>
+<ul>
+  <li><strong>Partitioned and third-party cookies on every cleanup.</strong> Every cleanup sweeps all cookies, including partitioned (CHIPS) cookies, which are only visible to extensions that ask for them explicitly.</li>
+  <li><strong>Built for Manifest V3.</strong> Every pending cleanup has a backup alarm, so cleaning still happens after Chrome pauses the extension.</li>
+  <li><strong>A short setup</strong> to pick the sites to keep before anything is cleaned, and <strong>Undo</strong> for 2 minutes after each cleanup.</li>
+</ul>
+<h2>Move your lists from Cookie AutoDelete</h2>
+<ol class="steps">
+  <li>In Cookie AutoDelete (in Firefox, or an old Chrome profile), open Settings, then List of expressions, and export your expressions to a file.</li>
+  <li>Install Crumble. Setup opens by itself; at step two, choose <strong>Import from Cookie AutoDelete</strong>. Later you can use Settings, Lists, Import rules instead.</li>
+  <li>Check the preview: how many rules will be added, which existing ones will be replaced, and anything that can't be imported, with the reason. Firefox container lists can be added to the main lists or skipped.</li>
+  <li>Click <strong>Import rules</strong>. Nothing changes before you do.</li>
+</ol>
+<p class="note">Crumble is an independent project and is not affiliated with Cookie AutoDelete or its maintainers. Thank you to them for years of a great extension.</p>
+<h2>Questions</h2>
+<div class="faq">
+{{FAQ}}
+</div>

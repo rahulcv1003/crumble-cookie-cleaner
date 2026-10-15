@@ -1,0 +1,128 @@
+{
+  "a_embedded_after_write": {
+    "ls_w": "1",
+    "idb": [
+      "wdb"
+    ],
+    "cookie": "part=1; plain=1"
+  },
+  "b_direct_after_write": {
+    "ls_direct": "1",
+    "ls_w": null,
+    "idb": [],
+    "cookie": "plain=1"
+  },
+  "c_baseline_embedded_before_remove": {
+    "ls_w": "1",
+    "idb": [
+      "wdb"
+    ],
+    "cookie": "part=1; plain=1"
+  },
+  "c_baseline_direct_before_remove": {
+    "ls_direct": "1",
+    "ls_w": null,
+    "idb": [],
+    "cookie": "plain=1"
+  },
+  "d_remove_widget": {
+    "ok": true,
+    "ms": 3
+  },
+  "e_embedded_after_remove": {
+    "ls_w": "1",
+    "idb": [
+      "wdb"
+    ],
+    "cookie": "part=1; plain=1"
+  },
+  "f_direct_after_remove": {
+    "ls_direct": null,
+    "ls_w": null,
+    "idb": [],
+    "cookie": "plain=1"
+  },
+  "g1_remove_b": {
+    "ok": true,
+    "ms": 4
+  },
+  "g1_embedded_after_remove_b": {
+    "ls_w": null,
+    "idb": [],
+    "cookie": "part=1; plain=1"
+  },
+  "g2_remove_noFilter": {
+    "ok": true,
+    "ms": 24
+  },
+  "g2_embedded_after_remove_all": {
+    "ls_w": null,
+    "idb": [],
+    "cookie": "part=1; plain=1"
+  },
+  "h_a_after_write": {
+    "ls_a": "1",
+    "idb": [
+      "adb"
+    ],
+    "caches": [
+      "acache"
+    ],
+    "sw": [
+      "https://a.test/"
+    ],
+    "cookie": "first=1"
+  },
+  "h_a_baseline_before_remove": {
+    "ls_a": "1",
+    "idb": [
+      "adb"
+    ],
+    "caches": [
+      "acache"
+    ],
+    "sw": [
+      "https://a.test/"
+    ],
+    "cookie": "first=1"
+  },
+  "h_remove_cacheStorage": {
+    "ok": true,
+    "ms": 2
+  },
+  "h_a_after_cacheStorage_remove": {
+    "ls_a": "1",
+    "idb": [
+      "adb"
+    ],
+    "caches": [],
+    "sw": [
+      "https://a.test/"
+    ],
+    "cookie": "first=1"
+  },
+  "h_remove_serviceWorkers": {
+    "ok": true,
+    "ms": 2
+  },
+  "h_a_after_serviceWorkers_remove": {
+    "ls_a": "1",
+    "idb": [
+      "adb"
+    ],
+    "caches": [],
+    "sw": [],
+    "cookie": "first=1"
+  },
+  "h_remove_ls_idb_a": {
+    "ok": true,
+    "ms": 2
+  },
+  "h_a_after_ls_idb_remove": {
+    "ls_a": null,
+    "idb": [],
+    "caches": [],
+    "sw": [],
+    "cookie": "first=1"
+  }
+}

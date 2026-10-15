@@ -1,0 +1,55 @@
+{
+  "B_before_close": {
+    "local": {
+      "installEvents": [
+        {
+          "at": 1792045349163,
+          "reason": "install"
+        }
+      ],
+      "localVal": "L-1792045349344",
+      "swBoots": [
+        1792045349162
+      ]
+    },
+    "session": {
+      "sessionVal": "S-1792045349344"
+    },
+    "alarms": [
+      {
+        "name": "restarttest",
+        "scheduledTime": 1792045409344
+      }
+    ]
+  },
+  "B_closedSecondsAfterPrepare": 8.105,
+  "B_securePrefsExtEntry": "not found",
+  "B_prefsExtEntry": {
+    "location": 8
+  },
+  "B_after_relaunch": {
+    "secondsAfterPrepare": 18.624,
+    "sessionVal": null,
+    "localVal": "L-1792045349344",
+    "alarms": [],
+    "onStartupFiredAt": null,
+    "installEvents": [
+      {
+        "at": "2026-10-15T06:22:29.163Z",
+        "reason": "install"
+      },
+      {
+        "at": "2026-10-15T06:22:47.842Z",
+        "reason": "install"
+      }
+    ]
+  },
+  "B_after_due": {
+    "alarmFired": null,
+    "alarms": []
+  },
+  "C_relaunch_without_load_extension": {
+    "serviceWorkers": [],
+    "extensionsPageItems": []
+  }
+}

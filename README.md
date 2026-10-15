@@ -95,4 +95,3 @@ Read [CONTRIBUTING.md](CONTRIBUTING.md) before changing cleanup behaviour. Contr
 ## License
 
 MIT. See [LICENSE](LICENSE).
-

@@ -1,0 +1,18 @@
+{
+  "before": {
+    "ls_w": "1",
+    "idb": [
+      "wdb"
+    ],
+    "cookie": "part=1; plain=1"
+  },
+  "remove_noFilter": {
+    "ok": true,
+    "ms": 19
+  },
+  "after": {
+    "ls_w": null,
+    "idb": [],
+    "cookie": "part=1; plain=1"
+  }
+}

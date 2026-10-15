@@ -1,0 +1,31 @@
+body { font-size: 15px; }
+main { max-width: 640px; margin: 0 auto; padding: 48px 24px 72px; }
+h1 { font-size: 22px; font-weight: 600; margin: 0 0 10px; display: flex; gap: 12px; align-items: center; }
+h1 .mark { width: 26px; height: 26px; }
+.intro p { margin: 0 0 4px; }
+.intro { padding-bottom: 24px; border-bottom: 1px solid var(--rule); margin-bottom: 8px; }
+ol.steps { list-style: none; margin: 0; padding: 0; counter-reset: step; }
+ol.steps > li { counter-increment: step; display: grid; grid-template-columns: 32px minmax(0, 1fr); padding: 22px 0; border-bottom: 1px solid var(--rule); }
+ol.steps > li::before { content: counter(step); font-variant-numeric: tabular-nums; font-weight: 600; color: var(--muted); }
+ol.steps > li[aria-current="step"]::before { color: var(--ink); }
+ol.steps > li.done::before { color: var(--keep); }
+h2 { font-size: 16px; font-weight: 600; margin: 0 0 6px; }
+.sub { color: var(--muted); margin: 0 0 12px; }
+.picks { list-style: none; padding: 0; margin: 0 0 12px; }
+.picks li { padding: 5px 0; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; gap: 12px; }
+.picks li:first-child { border-top: 0; }
+.picks label { cursor: pointer; display: flex; gap: 8px; align-items: center; }
+.picks .count { color: var(--muted); font-variant-numeric: tabular-nums; }
+h3 { font-size: 13px; font-weight: 600; color: var(--muted); margin: 14px 0 4px; }
+.add { display: flex; gap: 8px; margin-top: 8px; }
+.add input { flex: 1; font-family: var(--mono); }
+.errors { color: var(--alert); margin: 6px 0 0; padding: 0; list-style: none; }
+.buttons { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.inactive { color: var(--muted); }
+.finished { padding: 22px 0; }
+dialog { border: 1px solid var(--ink); border-radius: var(--radius); background: var(--paper); color: var(--ink); padding: 18px 20px; max-width: 560px; }
+dialog::backdrop { background: rgb(0 0 0 / 0.35); }
+dialog h3 { margin: 0 0 8px; font-size: 15px; color: var(--ink); }
+dialog p { margin: 0 0 10px; }
+dialog .buttons { justify-content: flex-end; }
+dialog ul.skipped { max-height: 160px; overflow: auto; padding-left: 18px; }

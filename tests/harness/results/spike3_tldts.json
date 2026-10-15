@@ -1,0 +1,111 @@
+{
+  "version": "7.4.18",
+  "results": {
+    "news.bbc.co.uk": {
+      "getDomain": "bbc.co.uk",
+      "getPublicSuffix": "co.uk",
+      "parse": {
+        "hostname": "news.bbc.co.uk",
+        "domain": "bbc.co.uk",
+        "subdomain": "news",
+        "publicSuffix": "co.uk",
+        "isIp": false,
+        "isIcann": true,
+        "isPrivate": false
+      }
+    },
+    "a.github.io": {
+      "getDomain": "github.io",
+      "getPublicSuffix": "io",
+      "parse": {
+        "hostname": "a.github.io",
+        "domain": "github.io",
+        "subdomain": "a",
+        "publicSuffix": "io",
+        "isIp": false,
+        "isIcann": true,
+        "isPrivate": false
+      }
+    },
+    "sub.example.com": {
+      "getDomain": "example.com",
+      "getPublicSuffix": "com",
+      "parse": {
+        "hostname": "sub.example.com",
+        "domain": "example.com",
+        "subdomain": "sub",
+        "publicSuffix": "com",
+        "isIp": false,
+        "isIcann": true,
+        "isPrivate": false
+      }
+    },
+    "localhost": {
+      "getDomain": null,
+      "getPublicSuffix": "localhost",
+      "parse": {
+        "hostname": "localhost",
+        "domain": null,
+        "subdomain": null,
+        "publicSuffix": "localhost",
+        "isIp": false,
+        "isIcann": false,
+        "isPrivate": false
+      }
+    },
+    "127.0.0.1": {
+      "getDomain": null,
+      "getPublicSuffix": null,
+      "parse": {
+        "hostname": "127.0.0.1",
+        "domain": null,
+        "subdomain": null,
+        "publicSuffix": null,
+        "isIp": true,
+        "isIcann": null,
+        "isPrivate": null
+      }
+    },
+    "xn--bcher-kva.de": {
+      "getDomain": "xn--bcher-kva.de",
+      "getPublicSuffix": "de",
+      "parse": {
+        "hostname": "xn--bcher-kva.de",
+        "domain": "xn--bcher-kva.de",
+        "subdomain": "",
+        "publicSuffix": "de",
+        "isIp": false,
+        "isIcann": true,
+        "isPrivate": false
+      }
+    },
+    "bücher.de": {
+      "getDomain": "bücher.de",
+      "getPublicSuffix": "de",
+      "parse": {
+        "hostname": "bücher.de",
+        "domain": "bücher.de",
+        "subdomain": "",
+        "publicSuffix": "de",
+        "isIp": false,
+        "isIcann": true,
+        "isPrivate": false
+      }
+    },
+    "widget.test": {
+      "getDomain": "widget.test",
+      "getPublicSuffix": "test",
+      "parse": {
+        "hostname": "widget.test",
+        "domain": "widget.test",
+        "subdomain": "",
+        "publicSuffix": "test",
+        "isIp": false,
+        "isIcann": false,
+        "isPrivate": false
+      }
+    },
+    "a.github.io (allowPrivateDomains:false default)": "github.io",
+    "a.github.io (allowPrivateDomains:true)": "a.github.io"
+  }
+}

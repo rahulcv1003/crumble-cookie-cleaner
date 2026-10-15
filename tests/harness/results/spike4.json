@@ -1,0 +1,185 @@
+{
+  "a_scheduled": {
+    "scheduledAt": 1792045172795,
+    "alarm": {
+      "name": "sleeptest",
+      "scheduledTime": 1792045232795
+    },
+    "scheduledAtIso": "2026-10-15T06:19:32.795Z"
+  },
+  "b_stop": {
+    "stoppedAt": 1792045179816,
+    "stoppedAtIso": "2026-10-15T06:19:39.816Z",
+    "method": "CDP ServiceWorker.stopWorker via page session on extension page",
+    "found": [
+      {
+        "versionId": "0",
+        "runningStatus": "running"
+      }
+    ],
+    "statusLog": [
+      {
+        "t": 1792045177813,
+        "versionId": "0",
+        "scriptURL": "chrome-extension://kocgnomhfgbiffdfagcfoaeknalhbecc/sw.js",
+        "runningStatus": "running",
+        "status": "activated"
+      },
+      {
+        "t": 1792045178315,
+        "versionId": "0",
+        "scriptURL": "chrome-extension://kocgnomhfgbiffdfagcfoaeknalhbecc/sw.js",
+        "runningStatus": "stopping",
+        "status": "activated"
+      },
+      {
+        "t": 1792045178322,
+        "versionId": "0",
+        "scriptURL": "chrome-extension://kocgnomhfgbiffdfagcfoaeknalhbecc/sw.js",
+        "runningStatus": "stopped",
+        "status": "activated"
+      },
+      {
+        "t": 1792045232799,
+        "versionId": "0",
+        "scriptURL": "chrome-extension://kocgnomhfgbiffdfagcfoaeknalhbecc/sw.js",
+        "runningStatus": "starting",
+        "status": "activated"
+      },
+      {
+        "t": 1792045232799,
+        "versionId": "0",
+        "scriptURL": "chrome-extension://kocgnomhfgbiffdfagcfoaeknalhbecc/sw.js",
+        "runningStatus": "starting",
+        "status": "activated"
+      },
+      {
+        "t": 1792045232803,
+        "versionId": "0",
+        "scriptURL": "chrome-extension://kocgnomhfgbiffdfagcfoaeknalhbecc/sw.js",
+        "runningStatus": "starting",
+        "status": "activated"
+      },
+      {
+        "t": 1792045232814,
+        "versionId": "0",
+        "scriptURL": "chrome-extension://kocgnomhfgbiffdfagcfoaeknalhbecc/sw.js",
+        "runningStatus": "running",
+        "status": "activated"
+      }
+    ],
+    "latest": [
+      {
+        "versionId": "0",
+        "runningStatus": "stopped"
+      }
+    ]
+  },
+  "b_statusLogDuringWait": [
+    {
+      "t": "2026-10-15T06:20:32.799Z",
+      "versionId": "0",
+      "scriptURL": "chrome-extension://kocgnomhfgbiffdfagcfoaeknalhbecc/sw.js",
+      "runningStatus": "starting",
+      "status": "activated"
+    },
+    {
+      "t": "2026-10-15T06:20:32.799Z",
+      "versionId": "0",
+      "scriptURL": "chrome-extension://kocgnomhfgbiffdfagcfoaeknalhbecc/sw.js",
+      "runningStatus": "starting",
+      "status": "activated"
+    },
+    {
+      "t": "2026-10-15T06:20:32.803Z",
+      "versionId": "0",
+      "scriptURL": "chrome-extension://kocgnomhfgbiffdfagcfoaeknalhbecc/sw.js",
+      "runningStatus": "starting",
+      "status": "activated"
+    },
+    {
+      "t": "2026-10-15T06:20:32.814Z",
+      "versionId": "0",
+      "scriptURL": "chrome-extension://kocgnomhfgbiffdfagcfoaeknalhbecc/sw.js",
+      "runningStatus": "running",
+      "status": "activated"
+    }
+  ],
+  "b_result": {
+    "timeoutFiredAt": null,
+    "alarmFiredAt": "2026-10-15T06:20:32.813Z",
+    "alarmDelayFromScheduleMs": 60018,
+    "timeoutDelayFromScheduleMs": null,
+    "swBoots": [
+      "2026-10-15T06:19:32.646Z",
+      "2026-10-15T06:20:32.814Z"
+    ],
+    "alarmsNow": []
+  },
+  "c_prepared": {
+    "t": 1792045250700,
+    "alarm": {
+      "name": "restarttest",
+      "scheduledTime": 1792045310700
+    },
+    "tIso": "2026-10-15T06:20:50.700Z",
+    "stateBeforeClose": {
+      "local": {
+        "installEvents": [
+          {
+            "at": 1792045250559,
+            "reason": "install"
+          }
+        ],
+        "localVal": "L-1792045250700",
+        "swBoots": [
+          1792045250559
+        ]
+      },
+      "session": {
+        "sessionVal": "S-1792045250700"
+      },
+      "alarms": [
+        {
+          "name": "restarttest",
+          "scheduledTime": 1792045310700
+        }
+      ]
+    }
+  },
+  "c_closed": {
+    "closedAtIso": "2026-10-15T06:20:50.805Z",
+    "secondsAfterPrepare": 0.105
+  },
+  "d_immediately_after_relaunch": {
+    "relaunchedAtIso": "2026-10-15T06:21:01.470Z",
+    "secondsAfterPrepare": 10.77,
+    "sessionVal": null,
+    "localVal": "L-1792045250700",
+    "alarms": [],
+    "onStartupFiredAt": null,
+    "installEvents": [
+      {
+        "at": "2026-10-15T06:20:50.559Z",
+        "reason": "install"
+      },
+      {
+        "at": "2026-10-15T06:21:01.247Z",
+        "reason": "install"
+      }
+    ],
+    "swBoots": [
+      "2026-10-15T06:20:50.559Z",
+      "2026-10-15T06:21:01.246Z"
+    ],
+    "alarmFired_restarttest": null
+  },
+  "d_after_alarm_due": {
+    "readAtIso": "2026-10-15T06:22:05.708Z",
+    "secondsAfterPrepare": 75.008,
+    "alarmFired_restarttest": null,
+    "firedSecondsAfterPrepare": null,
+    "alarms": [],
+    "sessionVal": null
+  }
+}

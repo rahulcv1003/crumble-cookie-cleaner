@@ -1,0 +1,17 @@
+{
+  "created": {
+    "tIso": "2026-10-15T06:25:45.460Z",
+    "alarm": {
+      "name": "missed",
+      "scheduledTime": 1792045565460
+    }
+  },
+  "closedSecondsAfterCreate": 3.088,
+  "after_relaunch": {
+    "relaunchedSecondsAfterCreate": 33.638,
+    "alarmFiredAt": "2026-10-15T06:26:18.941Z",
+    "firedSecondsAfterCreate": 33.481,
+    "onStartupFiredAt": "2026-10-15T06:26:18.940Z",
+    "alarms": []
+  }
+}

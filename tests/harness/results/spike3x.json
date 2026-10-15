@@ -1,0 +1,55 @@
+{
+  "s3_viaMessage": {
+    "typeof": "undefined",
+    "keys": null,
+    "protoKeys": null
+  },
+  "s3_direct_sw_eval": {
+    "typeofPublicSuffix": "undefined",
+    "chromeKeys": [
+      "alarms",
+      "browsingData",
+      "cookies",
+      "csi",
+      "dom",
+      "extension",
+      "i18n",
+      "loadTimes",
+      "management",
+      "permissions",
+      "runtime",
+      "storage",
+      "tabs",
+      "windows"
+    ]
+  },
+  "x1_tabsQuery": [
+    {
+      "id": 371209637,
+      "hasUrlKey": false,
+      "hasTitleKey": false
+    },
+    {
+      "id": 371209638,
+      "hasUrlKey": false,
+      "hasTitleKey": false
+    },
+    {
+      "id": 371209639,
+      "url": "https://a.test/",
+      "title": "a.test",
+      "hasUrlKey": true,
+      "hasTitleKey": true
+    }
+  ],
+  "x2_cookieStores": [
+    {
+      "id": "0",
+      "tabIds": [
+        371209637,
+        371209638,
+        371209639
+      ]
+    }
+  ]
+}
