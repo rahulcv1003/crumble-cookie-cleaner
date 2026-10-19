@@ -78,6 +78,7 @@ End-to-end tests launch an isolated Playwright Chromium profile and local `*.tes
 - [Privacy policy](docs/PRIVACY.md)
 - [Permission explanations](docs/PERMISSIONS.md)
 - [Automated test results](docs/TEST-RESULTS.md)
+- [Final pre-store review (19 October 2026)](docs/RELEASE-REVIEW-2026-10-19.md)
 - [Manual test plan](docs/MANUAL-TESTS.md)
 - [Release checklist](docs/RELEASE-CHECKLIST.md)
 - [Changelog](CHANGELOG.md)

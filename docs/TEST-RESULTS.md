@@ -1,5 +1,14 @@
 # Test results
 
+## Pre-store release review: 19 October 2026
+
+- Tested source: `57f6b54a41d655d8f8a7181632f453b9ef34e988`.
+- [GitHub CI evidence](https://github.com/rahulcv1003/crumble-cookie-cleaner/actions/runs/39217361092): typecheck, lint, build, **118 unit tests**, **75 browser tests**, and **2 screenshot-generation tests** passed.
+- One discarded-tab browser test remains intentionally skipped; zero unexpected failures and zero flaky tests.
+- Added a production-build smoke test covering first-run setup, popup, settings, and the inspiration credit without test hooks.
+- The 39-file release ZIP includes Crumble's licence and bundled runtime dependency notices.
+- Fresh About screenshots reviewed in both themes. Full scope and remaining manual acceptance steps: [release review](RELEASE-REVIEW-2026-10-19.md).
+
 ## Phase A: 15 October 2026
 
 - Build version: 0.1.0 (`manifest.json`)
