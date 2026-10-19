@@ -1609,5 +1609,17 @@
         "content": "$1"
       }
     }
+  },
+  "aboutInspiration": {
+    "message": "Inspiration and thanks",
+    "description": "About row."
+  },
+  "aboutInspirationText": {
+    "message": "Crumble is inspired by Cookie AutoDelete's approach to automatic cookie cleanup and keeping trusted sites. Thank you to its creators, maintainers and contributors for their work on browser privacy and for making the project open source. Crumble is an independent implementation with its own interface, and is not affiliated with or endorsed by Cookie AutoDelete.",
+    "description": "Acknowledgement of the project's inspiration, without implying affiliation or code reuse."
+  },
+  "aboutInspirationLink": {
+    "message": "Visit Cookie AutoDelete",
+    "description": "Link to the original project's repository."
   }
 }

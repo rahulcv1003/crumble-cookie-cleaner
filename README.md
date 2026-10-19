@@ -11,7 +11,7 @@ It is designed as a modern, independently built successor for people who miss Co
 - Deletes first-party, third-party, and partitioned (CHIPS) cookies after a site's last tab closes.
 - Optionally clears LocalStorage, IndexedDB, Cache Storage, and Service Workers.
 - Supports **Keep** and **Keep until restart** rules, including domain, wildcard, and regular-expression patterns.
-- Imports Cookie AutoDelete exports and can export Crumble settings for backup.
+- Imports Cookie AutoDelete exports and can export Crumble rules for backup.
 - Provides a cleanup log and a two-minute cookie undo window.
 - Recovers pending cleanups after the Manifest V3 service worker sleeps or the browser restarts.
 - Includes manual cleaning, context-menu actions, a keyboard command, badges, and light/dark themes.
@@ -19,7 +19,7 @@ It is designed as a modern, independently built successor for people who miss Co
 
 ## How cleanup works
 
-When the last tab for a site closes, Crumble waits for the configured delay and checks whether the site is still in use. It then applies the most specific matching rule. Kept sites are left alone; other sites have the selected cookie and site-data types removed. A backup browser alarm ensures scheduled work survives service-worker suspension.
+When the last tab for a site closes, Crumble waits for the configured delay and checks whether the site is still in use. It then applies the matching Keep and Keep until restart rules, with Keep taking priority. Kept cookies are left alone; other cookies and selected site-data types are removed according to the rules and settings. A backup browser alarm ensures scheduled work survives service-worker suspension.
 
 Cookie removal is verified by reading the cookie store again and retrying once when necessary. Cleanup jobs run one at a time, and overlapping triggers are merged to avoid races.
 
@@ -91,6 +91,12 @@ Use a fresh browser profile for manual testing so test cleanups cannot affect pe
 ## Contributing
 
 Read [CONTRIBUTING.md](CONTRIBUTING.md) before changing cleanup behaviour. Contributions should include tests and keep `npm test` green.
+
+## Inspiration and thanks
+
+Crumble is inspired by [Cookie AutoDelete](https://github.com/Cookie-AutoDelete/Cookie-AutoDelete) and its approach to automatic cookie cleanup and keeping trusted sites. Thank you to its creators, maintainers, and contributors for their work on browser privacy and for making the project open source.
+
+Crumble is an independent Manifest V3 implementation with its own interface. It is not affiliated with or endorsed by Cookie AutoDelete, and does not reuse its code or artwork.
 
 ## License
 

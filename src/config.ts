@@ -6,6 +6,7 @@
 export const CONFIG = {
   githubUser: "rahulcv1003",
   repoName: "crumble-cookie-cleaner",
+  inspirationUrl: "https://github.com/Cookie-AutoDelete/Cookie-AutoDelete",
   /** Short optional uninstall feedback form. No user data is ever added to this URL. */
   uninstallFormUrl: "https://rahulcv1003.github.io/crumble-cookie-cleaner/uninstall.html",
   changelogUrl: "https://rahulcv1003.github.io/crumble-cookie-cleaner/changelog.html",

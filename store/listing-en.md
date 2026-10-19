@@ -34,6 +34,9 @@ Chrome only lets an extension read and delete cookies for sites it has access to
 **Privacy**
 No account, no analytics, no servers. Nothing leaves your browser. The code is open source: https://github.com/rahulcv1003/crumble-cookie-cleaner
 
+**Inspiration and thanks**
+Crumble is inspired by Cookie AutoDelete's approach to automatic cookie cleanup and keeping trusted sites. Thank you to its creators, maintainers and contributors for their work on browser privacy and for making the project open source. Crumble is an independent implementation with its own interface, and is not affiliated with or endorsed by Cookie AutoDelete.
+
 ## Screenshots (1280 x 800, real UI; see store/screenshots/)
 1. The popup on a site that will be cleaned
 2. The Keep list in settings

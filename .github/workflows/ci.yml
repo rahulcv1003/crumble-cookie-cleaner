@@ -30,3 +30,17 @@ jobs:
         run: xvfb-run -a npm test
       - name: Build release package
         run: npm run package
+      - name: Capture the interface for release review
+        run: |
+          cp test-results/e2e-results.json test-results/release-suite-results.json
+          xvfb-run -a npm run screenshots
+      - name: Save release review evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-review
+          path: |
+            docs/screenshots/
+            release/*.zip
+            test-results/*results.json
+          retention-days: 14

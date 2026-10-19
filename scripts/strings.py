@@ -260,6 +260,9 @@ S = {
  "reportWhatHappened": ("What happened", "Report field for the user's description."),
  "aboutLicence": ("Licence", "About row."),
  "aboutLicenceText": ("Crumble is open source under the MIT licence. It is an independent project, not affiliated with Cookie AutoDelete, and contains none of its code.", "About licence statement."),
+ "aboutInspiration": ("Inspiration and thanks", "About row."),
+ "aboutInspirationText": ("Crumble is inspired by Cookie AutoDelete's approach to automatic cookie cleanup and keeping trusted sites. Thank you to its creators, maintainers and contributors for their work on browser privacy and for making the project open source. Crumble is an independent implementation with its own interface, and is not affiliated with or endorsed by Cookie AutoDelete.", "Acknowledgement of the project's inspiration, without implying affiliation or code reuse."),
+ "aboutInspirationLink": ("Visit Cookie AutoDelete", "Link to the original project's repository."),
  # Welcome
  "welcomeTitle": ("Welcome to Crumble", "Welcome page heading."),
  "welcomeLine1": ("Crumble deletes cookies and site data shortly after you close a site's last tab.", "Welcome line 1."),

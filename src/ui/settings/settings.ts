@@ -480,6 +480,8 @@ function aboutSection(s: Settings, log: LogEntry[]): HTMLElement {
         });
       } }, t("actionReportProblem")))),
     h("div", { class: "setting" }, h("div", { class: "text" }, h("span", { class: "label" }, t("aboutLicence")), h("p", {}, t("aboutLicenceText"))), h("div", { class: "control" })),
+    h("div", { class: "setting" }, h("div", { class: "text" }, h("span", { class: "label" }, t("aboutInspiration")), h("p", {}, t("aboutInspirationText"))), h("div", { class: "control" },
+      h("a", { href: CONFIG.inspirationUrl, target: "_blank", rel: "noopener noreferrer" }, t("aboutInspirationLink")))),
   );
 }
 
