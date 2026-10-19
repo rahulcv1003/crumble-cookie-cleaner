@@ -36,6 +36,9 @@ describe("Permissions and manifest", () => {
     // the shipped build contains no test hooks
     expect(existsSync(path.join(dist, "test-hooks.html"))).toBe(false);
     expect(existsSync(path.join(dist, "test-hooks.js"))).toBe(false);
+    for (const notice of ["LICENSE", "LICENSE-THIRD-PARTY.md"]) {
+      expect(read(path.join(dist, notice))).toBe(read(path.join(root, notice)));
+    }
   });
 
   it("PER-02 build contains no eval, new Function, remote script URLs, fetch or XMLHttpRequest", () => {

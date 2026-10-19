@@ -100,4 +100,4 @@ Crumble is an independent Manifest V3 implementation with its own interface. It 
 
 ## License
 
-MIT. See [LICENSE](LICENSE).
+MIT. See [LICENSE](LICENSE). Bundled runtime dependencies are credited in [LICENSE-THIRD-PARTY.md](LICENSE-THIRD-PARTY.md); both licence files are included in the extension ZIP.

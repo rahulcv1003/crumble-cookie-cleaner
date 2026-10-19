@@ -37,6 +37,9 @@ for (const f of await readdir(path.join(root, "assets/icons"))) {
 const manifest = JSON.parse(await readFile(path.join(root, "src/manifest.json"), "utf8"));
 await writeFile(path.join(out, "manifest.json"), JSON.stringify(manifest, null, 2));
 await cp(path.join(root, "src/_locales"), path.join(out, "_locales"), { recursive: true });
+for (const notice of ["LICENSE", "LICENSE-THIRD-PARTY.md"]) {
+  await cp(path.join(root, notice), path.join(out, notice));
+}
 
 if (isTest) {
   // Test-only page that exposes the core modules to Playwright. Never part of dist/.
