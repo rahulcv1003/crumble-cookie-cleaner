@@ -98,7 +98,8 @@ Implementation: `src/ui/tooltip.ts`.
 - Tooltips appear after a short pointer pause, immediately on focus, or by
   activating a help button with a keyboard or touch.
 - Escape dismisses help. Moving from an anchor onto the help text keeps it open.
-  Scroll, resize, outside interaction, and removal of the anchor dismiss it.
+  Scrolling repositions help for a focused control; otherwise it dismisses it.
+  Resize, outside interaction, and removal of the anchor also dismiss help.
 - The help bubble has `role="tooltip"` and is associated with its anchor through
   `aria-describedby`. Existing descriptions remain in place.
 - Fixed positioning clamps the bubble to the viewport, including the popup.

@@ -2,6 +2,21 @@
 
 ## Interface update: 27 October 2026 — 0.2.0
 
+- **Final release verification passed:** [GitHub CI run 40470270618](https://github.com/rahulcv1003/crumble-cookie-cleaner/actions/runs/40470270618),
+  tested source `375a79a21cbd33a94ebd13184f55ec31cfa6d838` on Ubuntu 24.04,
+  Node 22.23.3 and Playwright Chromium 141.0.7390.37.
+- Typecheck, lint, production build, **120 unit tests** and **78 browser tests**
+  passed. The one existing discarded-tab scenario remains intentionally skipped
+  for manual acceptance. No unexpected failures or retries.
+- Restart, update and all three incognito tests passed on Linux. Both themes'
+  popup/settings/setup axe checks reported **zero violations**. The production
+  smoke and no-network tests passed.
+- Packaging, **3 interface screenshot generators** and **1 store-asset generator**
+  passed in the same CI run. The `release-review` artifact contains the release
+  ZIP, screenshots, promotional artwork and machine-readable test results.
+
+### Local verification and environment notes
+
 - Typecheck, lint, production build and all **120 unit tests** passed on Windows.
 - The full Windows browser attempt recorded 65 passes, 13 failures and the existing
   discarded-tab skip. Ten failures occurred before the test body because the
@@ -18,8 +33,8 @@
   its OFL licence and runtime notices; test hooks, fixtures and source maps are absent.
 - All **3 interface screenshot generators** and the **store-asset generator** passed;
   the refreshed screenshots and promotional artwork were visually reviewed.
-- The full Linux CI run remains the authoritative restart/incognito/update check.
-  Its result will be linked here once the published source finishes verification.
+- The successful full Linux CI run above is the authoritative
+  restart/incognito/update check; the Windows fixture limitation remains documented.
 - The first CI attempt stopped before tests because `ubuntu-latest` had moved
   to Ubuntu 26.04, unsupported by the pinned Playwright 1.56.0. CI now uses
   Ubuntu 24.04 explicitly, matching the earlier successful release environment.

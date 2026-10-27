@@ -3,6 +3,7 @@
 | Item | Status | Notes |
 |---|---|---|
 | Version bumped in the manifest and changelog | Done | 0.2.0 in the manifest, package metadata and changelogs |
+| Full automated release verification | Done, 27 October 2026 | [CI run](https://github.com/rahulcv1003/crumble-cookie-cleaner/actions/runs/40470270618): 120 unit and 78 browser tests passed; one discarded-tab manual scenario skipped. Both themes' axe audits had zero violations; packaging and interface/store captures passed |
 | Packed zip built from a clean checkout; no source maps, tests or fixtures inside | Automated in CI | `npm run package` builds `release/crumble-0.2.0.zip` (41 files), includes the project, runtime and font licences, and refuses maps, specs, fixtures and test hooks |
 | Installed from the zip on fresh Chrome and Edge profiles with no console errors | Waiting for you | Your final test (FINAL-TEST.md) covers Chrome; Edge is the same steps at `edge://extensions` |
 | Store listing, screenshots and tiles uploaded to Chrome Web Store and Edge Add-ons | Ready, needs your developer accounts | Text: `store/listing-en.md`. Images: `store/screenshots/`, `store/promo-small-440x280.png`, `store/marquee-1400x560.png`. Icon: `assets/icons/icon-128.png`. Chrome charges a one-time $5 developer fee |
