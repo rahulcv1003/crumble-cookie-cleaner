@@ -6,6 +6,7 @@
 import { formatNumber, plural, relativeTime, t } from "../../core/i18n";
 import type { PopupState } from "../../core/messages";
 import { clear, h, mark, send, type MarkKind } from "../dom";
+import { helpButton, hideTooltip, withTooltip } from "../tooltip";
 
 const app = document.getElementById("app")!;
 let tab: chrome.tabs.Tab | undefined;
@@ -36,10 +37,10 @@ function siteBlock(s: PopupState): HTMLElement {
   const statusText = st.list === "keep" ? t("statusKept") : st.list === "restart" ? t("statusKeptUntilRestart") : t("statusWillBeCleaned");
   const editRule = st.matching.find((m) => st.removable.includes(m.id)) ?? st.matching[0];
   const actions = h("div", { class: "actions" });
-  if (st.list !== "keep") actions.append(h("button", { class: "btn", onclick: () => act({ type: "keepSite", host: st.host, list: "keep" }) }, t("actionKeep")));
-  if (st.list !== "restart") actions.append(h("button", { class: "btn", onclick: () => act({ type: "keepSite", host: st.host, list: "restart" }) }, t("actionKeepUntilRestart")));
-  if (st.removable.length > 0) actions.append(h("button", { class: "btn", onclick: () => act({ type: "removeSite", host: st.host }) }, t("actionRemoveFromList")));
-  actions.append(h("button", { class: "btn", onclick: () => act({ type: "cleanSite", site: st.site, origin: st.origin }, (r) => (notice = cleanedNotice(r.entry))) }, t("actionCleanSiteNow")));
+  if (st.list !== "keep") actions.append(withTooltip(h("button", { class: "btn", onclick: () => act({ type: "keepSite", host: st.host, list: "keep" }) }, t("actionKeep")), t("tipKeep")));
+  if (st.list !== "restart") actions.append(withTooltip(h("button", { class: "btn", onclick: () => act({ type: "keepSite", host: st.host, list: "restart" }) }, t("actionKeepUntilRestart")), t("tipRestart")));
+  if (st.removable.length > 0) actions.append(withTooltip(h("button", { class: "btn", onclick: () => act({ type: "removeSite", host: st.host }) }, t("actionRemoveFromList")), t("tipRemove")));
+  actions.append(withTooltip(h("button", { class: "btn site-clean", onclick: () => act({ type: "cleanSite", site: st.site, origin: st.origin }, (r) => (notice = cleanedNotice(r.entry))) }, t("actionCleanSiteNow")), t("tipCleanSite")));
   if (editRule) {
     actions.append(h("button", { class: "link", onclick: () => openSettings(`rule=${encodeURIComponent(editRule.id)}`) }, t("actionEditRule")));
   }
@@ -61,7 +62,7 @@ function controls(s: PopupState): HTMLElement {
     sec.append(h("p", { class: "note" }, t("setupUnfinished"), " ", h("button", { class: "link", onclick: () => openPage("welcome.html") }, t("actionFinishSetup"))));
   } else {
     const sw = h("input", { type: "checkbox", class: "switch", id: "auto", role: "switch", checked: s.autoClean, "aria-checked": String(s.autoClean), onchange: (e: Event) => act({ type: "setAutoClean", on: (e.target as HTMLInputElement).checked }) });
-    sec.append(h("div", { class: "row" }, h("label", { for: "auto" }, t("autoCleanLabel")), sw));
+    sec.append(h("div", { class: "row" }, h("div", { class: "help-label" }, h("label", { for: "auto" }, t("autoCleanLabel")), helpButton(t("autoCleanLabel"), t("tipAutomatic"))), withTooltip(sw, t("tipAutomatic"))));
   }
   const buttons = h("div", { class: "buttons" },
     h("button", { class: "btn primary", onclick: () => act({ type: "cleanNow" }, (r) => (notice = cleanedNotice(r.entry))) }, t("actionCleanNow")),
@@ -71,6 +72,8 @@ function controls(s: PopupState): HTMLElement {
       await render();
     } }, t("actionCleanIncludingOpen")),
   );
+  withTooltip(buttons.children[0] as HTMLElement, t("tipCleanNow"));
+  withTooltip(buttons.children[1] as HTMLElement, t("tipCleanOpen"));
   sec.append(buttons);
   if (confirming) {
     const n = confirming.sites;
@@ -95,7 +98,7 @@ function lastCleanup(s: PopupState): HTMLElement | null {
   if (!s.last && !notice) return null;
   const links = h("div", { class: "links" });
   if (s.undo.available) {
-    links.append(h("button", { class: "link", onclick: () => act({ type: "undo" }, (r) => (notice = r.expired ? t("undoExpired") : plural("undoRestored", r.restored))) }, t("actionUndoCleanup")));
+    links.append(withTooltip(h("button", { class: "link", onclick: () => act({ type: "undo" }, (r) => (notice = r.expired ? t("undoExpired") : plural("undoRestored", r.restored))) }, t("actionUndoCleanup")), t("tipUndo")));
   }
   if (s.last) links.append(h("button", { class: "link", onclick: () => openSettings("section=log") }, t("actionDetails")));
   const line = notice ?? (s.last!.sitesCleaned.length === 0
@@ -132,8 +135,9 @@ async function render(): Promise<void> {
   const s = await load();
   const focusedId = (document.activeElement as HTMLElement | null)?.id;
   clear(app);
+  hideTooltip();
   app.append(
-    h("header", {}, h("h1", { class: "name" }, t("productName")), h("button", { class: "link", onclick: () => openSettings("") }, t("popupSettings"))),
+    h("header", {}, h("div", { class: "brand" }, h("span", { class: "brand-badge" }, mark("clean")), h("h1", { class: "name" }, t("productName"))), h("button", { class: "link", onclick: () => openSettings("") }, t("popupSettings"))),
     siteBlock(s),
     controls(s),
   );

@@ -1,6 +1,6 @@
 {
   "name": "crumble",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "description": "Crumble: Auto-Delete Cookies on Tab Close (Chrome extension, Manifest V3)",
   "license": "MIT",
@@ -13,11 +13,11 @@
     "test:unit": "vitest run",
     "test:e2e": "npm run build:test && playwright test",
     "test": "npm run typecheck && npm run lint && npm run build && npm run test:unit && npm run test:e2e",
-    "screenshots": "npm run build:test && SCREENSHOTS=1 playwright test tests/e2e/screenshots.spec.ts",
+    "screenshots": "node scripts/capture.mjs screenshots",
     "icons": "node scripts/icons.mjs",
     "package": "node scripts/package.mjs",
     "site": "node scripts/site.mjs",
-    "store-assets": "npm run build:test && npm run site && SCREENSHOTS=1 playwright test tests/e2e/store-assets.spec.ts"
+    "store-assets": "npm run site && node scripts/capture.mjs store-assets"
   },
   "dependencies": {
     "punycode": "2.3.1",

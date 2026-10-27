@@ -34,6 +34,8 @@ jobs:
         run: |
           cp test-results/e2e-results.json test-results/release-suite-results.json
           xvfb-run -a npm run screenshots
+          cp test-results/e2e-results.json test-results/screenshot-results.json
+          xvfb-run -a npm run store-assets
       - name: Save release review evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -43,4 +45,6 @@ jobs:
             docs/screenshots/
             release/*.zip
             test-results/*results.json
+            store/*.png
+            store/screenshots/
           retention-days: 14

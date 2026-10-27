@@ -15,6 +15,7 @@ It is designed as a modern, independently built successor for people who miss Co
 - Provides a cleanup log and a two-minute cookie undo window.
 - Recovers pending cleanups after the Manifest V3 service worker sleeps or the browser restarts.
 - Includes manual cleaning, context-menu actions, a keyboard command, badges, and light/dark themes.
+- A refined interface with a locally bundled Inter font and contextual help for settings and cleanup actions.
 - Makes no network requests and contains no analytics, advertising, or account system.
 
 ## How cleanup works
@@ -39,6 +40,12 @@ The checked-in manifest source is `src/manifest.json`; the repository root is no
 
 Crumble targets Chrome 130+ and other current Chromium browsers, including Edge, Brave, Vivaldi, and Opera. Firefox and Safari are not currently supported.
 
+## Understand an option before changing it
+
+Hover over a question mark or an action to see what it will do. Keyboard users can focus the same controls and help buttons; press Escape to dismiss the tooltip. Help explains which sites stay signed in, when open tabs are affected, and which data can be restored. Reading help never changes a setting or starts a cleanup.
+
+The popup, settings and setup share light/dark themes, a locally bundled variable font, visible keyboard focus, and reduced-motion support. Fonts load entirely from the extension, without contacting a font service.
+
 ## Development
 
 | Command | Purpose |
@@ -54,6 +61,8 @@ Crumble targets Chrome 130+ and other current Chromium browsers, including Edge,
 
 End-to-end tests launch an isolated Playwright Chromium profile and local `*.test` sites. They never use your personal browser profile. The local test server needs port 443.
 
+Run the full browser suite on Linux (as CI does; use `xvfb-run -a npm test` without a display). Its restart, update and incognito fixtures edit Linux's temporary-profile preferences and do not support Windows' `Secure Preferences` layout. The UI tests and screenshot commands also work on Windows.
+
 ## Project structure
 
 | Path | Contents |
@@ -64,7 +73,7 @@ End-to-end tests launch an isolated Playwright Chromium profile and local `*.tes
 | `tests/unit/` | Fast logic and contract tests |
 | `tests/e2e/` | Installed-extension tests in Chromium |
 | `tests/harness/` | Research harness retained for browser-behaviour regression checks |
-| `assets/` | Source and generated icon assets |
+| `assets/` | Icons and the locally bundled Inter font with its licence |
 | `site/` | Landing, privacy, permissions, uninstall, and changelog pages |
 | `store/` | Web Store copy and promotional artwork |
 | `docs/` | Architecture decisions, privacy, permissions, tests, and release guidance |
@@ -79,6 +88,7 @@ End-to-end tests launch an isolated Playwright Chromium profile and local `*.tes
 - [Permission explanations](docs/PERMISSIONS.md)
 - [Automated test results](docs/TEST-RESULTS.md)
 - [Final pre-store review (19 October 2026)](docs/RELEASE-REVIEW-2026-10-19.md)
+- [0.2.0 interface update (27 October 2026)](docs/UI-UPDATE-2026-10-27.md)
 - [Manual test plan](docs/MANUAL-TESTS.md)
 - [Release checklist](docs/RELEASE-CHECKLIST.md)
 - [Changelog](CHANGELOG.md)
@@ -99,6 +109,8 @@ Crumble is inspired by [Cookie AutoDelete](https://github.com/Cookie-AutoDelete/
 
 Crumble is an independent Manifest V3 implementation with its own interface. It is not affiliated with or endorsed by Cookie AutoDelete, and does not reuse its code or artwork.
 
+The 0.2.0 visual direction draws inspiration from Apple's care for typography and spacing. Thank you to Rasmus Andersson and the [Inter contributors](https://rsms.me/inter/) for the open font used throughout the interface.
+
 ## License
 
-MIT. See [LICENSE](LICENSE). Bundled runtime dependencies are credited in [LICENSE-THIRD-PARTY.md](LICENSE-THIRD-PARTY.md); both licence files are included in the extension ZIP.
+MIT. See [LICENSE](LICENSE). Bundled runtime dependencies and the Inter font are credited in [LICENSE-THIRD-PARTY.md](LICENSE-THIRD-PARTY.md). Those notices and Inter's full [OFL licence](assets/fonts/OFL.txt) are included in the extension ZIP.

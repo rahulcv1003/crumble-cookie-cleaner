@@ -51,3 +51,12 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTH
 
 The domain database bundled with tldts is generated from the Public Suffix List:
 https://publicsuffix.org/list/.
+
+## Inter 4.1 variable typeface
+
+Copyright (c) 2016 The Inter Project Authors (https://github.com/rsms/inter).
+
+The unmodified InterVariable.woff2 file is bundled under the SIL Open Font License,
+Version 1.1. The full copyright and licence notice accompanies the font in
+`fonts/OFL.txt` in the extension package (`assets/fonts/OFL.txt` in this repository).
+Source: https://github.com/rsms/inter/tree/v4.1.

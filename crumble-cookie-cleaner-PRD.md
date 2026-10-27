@@ -2,6 +2,8 @@
 
 "Crumble" is a working name. See "Still open" at the end.
 
+> UI direction update, 27 October 2026: the product owner requested a premium interface inspired by leading technology products, updated typography, and consequence-focused tooltips. The current implementation and design specification are in `docs/DESIGN.md`. This request supersedes the original ledger-only restrictions on rounded surfaces, shadows and system-only fonts below. Functional cleanup requirements remain in force.
+
 ## Read this first (instructions for the AI building this)
 
 This document is the single source of truth for the build. Read all of it before writing code.

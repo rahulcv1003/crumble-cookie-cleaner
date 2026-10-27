@@ -36,6 +36,8 @@ describe("Permissions and manifest", () => {
     // the shipped build contains no test hooks
     expect(existsSync(path.join(dist, "test-hooks.html"))).toBe(false);
     expect(existsSync(path.join(dist, "test-hooks.js"))).toBe(false);
+    expect(statSync(path.join(dist, "fonts/InterVariable.woff2")).size).toBeGreaterThan(1000);
+    expect(read(path.join(dist, "fonts/OFL.txt"))).toContain("SIL OPEN FONT LICENSE");
     for (const notice of ["LICENSE", "LICENSE-THIRD-PARTY.md"]) {
       expect(read(path.join(dist, notice))).toBe(read(path.join(root, notice)));
     }

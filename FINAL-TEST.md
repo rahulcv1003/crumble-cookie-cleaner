@@ -3,6 +3,7 @@
 About 15 minutes. Use a **new Chrome profile** so your own logins are never at risk: click your profile picture in Chrome, then **Add**, then **Continue without an account**. Do every step in that profile.
 
 ## 1. Install
+This checklist applies to the 0.2.0 interface. Rebuild with `npm run build` before loading `dist/`; use `release/crumble-0.2.0.zip` for the store draft.
 1. Open `chrome://extensions` and turn on **Developer mode** (top right).
 2. Click **Load unpacked**, open your Cookie Remover folder, then open the `dist` folder and select it. Inside it you should see `manifest.json`, `background.js` and `popup.html`.
 3. Expected: the welcome page opens by itself, and Chrome shows the extension with no red **Errors** button.
@@ -19,6 +20,7 @@ About 15 minutes. Use a **new Chrome profile** so your own logins are never at r
 10. Click **Undo cleanup**. Expected: "Restored N cookies. Site data can't be restored."
 
 ## 4. Settings and import
+Hover an action or focus a `?` help button before changing an option. Check the explanation, dismiss it with Escape, and verify that opening help has not changed the setting. Try both Windows light and dark modes.
 11. Click **Settings** in the popup. Expected: your Keep rule `*.wikipedia.org` in Lists, and the cleanup in Log with reasons.
 12. Click **Import rules** and choose `tests/fixtures/cad-docs-example.json` from the Cookie Remover folder. Expected: a preview with 4 rules to add, a choice for container rules, and nothing changed until you click **Import rules**.
 

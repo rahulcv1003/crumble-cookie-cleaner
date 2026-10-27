@@ -226,7 +226,7 @@
     "description": "Button: clean every site that is not kept, even open ones. Asks first."
   },
   "confirmCleanIncludingOpenOne": {
-    "message": "Delete cookies and site data for $P1$ site, including sites open in tabs? This can't be undone after 2 minutes.",
+    "message": "Delete cookies and site data for $P1$ site, including sites open in tabs? You may be signed out. Cookies can be restored for 2 minutes; site data cannot be restored.",
     "description": "Confirmation before cleaning open tabs.",
     "placeholders": {
       "p1": {
@@ -235,7 +235,7 @@
     }
   },
   "confirmCleanIncludingOpenOther": {
-    "message": "Delete cookies and site data for $P1$ sites, including sites open in tabs? This can't be undone after 2 minutes.",
+    "message": "Delete cookies and site data for $P1$ sites, including sites open in tabs? You may be signed out. Cookies can be restored for 2 minutes; site data cannot be restored.",
     "description": "Confirmation before cleaning open tabs.",
     "placeholders": {
       "p1": {
@@ -1621,5 +1621,138 @@
   "aboutInspirationLink": {
     "message": "Visit Cookie AutoDelete",
     "description": "Link to the original project's repository."
+  },
+  "helpFor": {
+    "message": "Help: $P1$",
+    "description": "Accessible name of a help button. $1 is the setting or action.",
+    "placeholders": {
+      "p1": {
+        "content": "$1"
+      }
+    }
+  },
+  "settingsIntroTitle": {
+    "message": "Your browser. Your rules.",
+    "description": "Settings page heading."
+  },
+  "settingsIntroText": {
+    "message": "Keep what matters. Let the rest go.",
+    "description": "Settings page introduction."
+  },
+  "settingsLocalNote": {
+    "message": "Your preferences stay in this browser.",
+    "description": "Sidebar privacy note."
+  },
+  "tipKeep": {
+    "message": "Keep this site and its subdomains signed in. Adds a Keep rule so future automatic cleanups preserve its cookies and site data by default.",
+    "description": "Keep action tooltip."
+  },
+  "tipRestart": {
+    "message": "Keep this site's cookies until the browser restarts. At startup, cookies and enabled site data can be cleaned unless a Keep rule or an open tab protects them.",
+    "description": "Keep until restart action tooltip."
+  },
+  "tipRemove": {
+    "message": "Remove this site's rules from your lists. It can be cleaned on the next cleanup unless another matching rule still keeps it.",
+    "description": "Remove rule tooltip."
+  },
+  "tipCleanSite": {
+    "message": "Clean this site's cookies and enabled site data immediately, even while it is open or kept. You may be signed out. Undo can restore cookies for 2 minutes, but never site data.",
+    "description": "Single-site destructive action tooltip."
+  },
+  "tipCleanNow": {
+    "message": "Clean cookies and enabled site data for sites you have left. Open tabs and matching Keep rules stay protected. Cookie Undo is available for 2 minutes.",
+    "description": "Manual cleanup tooltip."
+  },
+  "tipCleanOpen": {
+    "message": "Also include sites that are open in tabs. Matching list rules still apply. You will confirm before cleaning. This may sign you out; site data cannot be restored.",
+    "description": "Include open tabs tooltip."
+  },
+  "tipUndo": {
+    "message": "Restore cookies from the last cleanup while the 2-minute window is open. This does not restore LocalStorage, databases, caches or Service Workers.",
+    "description": "Cookie undo tooltip."
+  },
+  "tipRuleList": {
+    "message": "Keep preserves matching cookies during automatic cleanup. Keep until restart preserves them until startup. If both match, Keep takes priority. Individual site-data choices can override these defaults.",
+    "description": "Rule-list choice tooltip."
+  },
+  "tipRuleData": {
+    "message": "For this rule, Keep preserves this type of site data; Clean removes it during eligible cleanups when the global type is enabled. Site-data deletion cannot be undone.",
+    "description": "Per-rule site-data tooltip."
+  },
+  "tipCookieNames": {
+    "message": "Keep all cookies to preserve the whole login session, or keep only the exact cookie names you enter. Other cookies can be deleted; missing a login cookie may sign you out.",
+    "description": "Rule cookie selection tooltip."
+  },
+  "tipImport": {
+    "message": "Choose a Crumble or Cookie AutoDelete rules file. You can review additions, replacements and skipped rules before confirming. Settings and browsing data are not imported.",
+    "description": "Import rules tooltip."
+  },
+  "tipExport": {
+    "message": "Download your rules as a JSON backup. It includes site patterns, notes and cookie names, but no cookie values or browsing history. Keep the file somewhere you trust.",
+    "description": "Export rules tooltip."
+  },
+  "tipDeleteRules": {
+    "message": "Remove selected rules after confirmation. This removes their protection, not the site's data immediately. A later cleanup may sign you out of those sites.",
+    "description": "Delete rules tooltip."
+  },
+  "tipAutomatic": {
+    "message": "On: eligible sites are cleaned after their last tab closes, following your rules and delay. Off: automatic triggers do nothing; manual cleanup buttons still work.",
+    "description": "Automatic cleaning switch tooltip."
+  },
+  "tipDelay": {
+    "message": "Wait this many seconds before an eligible tab-close or domain-change cleanup. Reopening the site in time cancels its pending cleanup. If Chrome pauses the extension, short delays may take up to 30 seconds.",
+    "description": "Cleanup delay tooltip."
+  },
+  "tipDomainChange": {
+    "message": "On: navigating to another site in the same tab can schedule cleanup of the site you left. Returning before the delay expires protects it. Off: navigation alone does not start cleanup.",
+    "description": "Domain-change setting tooltip."
+  },
+  "tipDiscarded": {
+    "message": "On: tabs Chrome unloaded to save memory no longer protect their site data. They can be cleaned and may be signed out when reopened. Off: discarded tabs still count as open.",
+    "description": "Discarded-tabs setting tooltip."
+  },
+  "tipStartup": {
+    "message": "On: run a cleanup when the browser starts, including cookies on Keep until restart. Keep rules still apply, and open tabs stay protected unless you enable cleaning open tabs at startup.",
+    "description": "Startup cleanup setting tooltip."
+  },
+  "tipOpenStartup": {
+    "message": "On: when startup cleaning is enabled, restored tabs no longer protect their sites from cleanup. You may need to sign in again. Keep rules still apply.",
+    "description": "Open tabs at startup setting tooltip."
+  },
+  "tipReload": {
+    "message": "On: after a startup cleanup, reload affected restored tabs once so they stop using deleted data. Unsaved page work may be lost. This only applies when cleaning open tabs at startup.",
+    "description": "Reload setting tooltip."
+  },
+  "tipEmbedded": {
+    "message": "On: partitioned cookies from embedded videos and widgets on a kept site stay with that site. Off: those embedded cookies may be cleaned even when the top-level site is kept, unless another rule protects them.",
+    "description": "Embedded cookies setting tooltip."
+  },
+  "tipSiteData": {
+    "message": "On: remove this data during eligible cleanups, subject to your per-site rules. Off: preserve this type. Deletion may remove offline content or preferences and cannot be undone; Undo restores cookies only.",
+    "description": "Site-data setting consequences."
+  },
+  "tipHttpCache": {
+    "message": "On: eligible cleanups may clear the browser's shared HTTP cache, including cached files used by open or kept sites. Pages may load more slowly next time. This is separate from per-site Cache Storage and cannot be undone.",
+    "description": "Global HTTP-cache consequence tooltip."
+  },
+  "tipSetupKeep": {
+    "message": "Selected sites become Keep rules, including their subdomains. They remain signed in during automatic cleanup by default. Nothing is cleaned until you finish setup and choose automatic mode.",
+    "description": "Setup Keep selection tooltip."
+  },
+  "tipSetupAutomatic": {
+    "message": "Start automatic cleaning as soon as setup finishes. Sites you did not keep become eligible after their last tab closes. Your selected delay and data settings apply.",
+    "description": "Setup automatic-mode tooltip."
+  },
+  "tipSetupManual": {
+    "message": "Finish setup with automatic cleaning off. Data is only cleaned when you choose a manual cleanup action. You can turn automatic cleaning on later.",
+    "description": "Setup manual-mode tooltip."
+  },
+  "tipEditRule": {
+    "message": "Open this rule's editor. You can choose which cookies and site data to keep. Changes only apply when you save the rule.",
+    "description": "Edit rule tooltip."
+  },
+  "tipClearLog": {
+    "message": "Delete the cleanup history after confirmation. This does not delete website data, change your rules or undo a cleanup.",
+    "description": "Clear log tooltip."
   }
 }

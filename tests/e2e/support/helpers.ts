@@ -78,7 +78,7 @@ export async function stopServiceWorker(ctx: BrowserContext, page: Page, extId: 
 /** Opens the popup as a page for a given tab (popup.html?tabId=N). */
 export async function openPopup(ctx: BrowserContext, extId: string, tabId: number): Promise<Page> {
   const p = await ctx.newPage();
-  await p.setViewportSize({ width: 340, height: 640 });
+  await p.setViewportSize({ width: 380, height: 600 });
   await p.goto(`chrome-extension://${extId}/popup.html?tabId=${tabId}`);
   await p.waitForSelector("header");
   return p;

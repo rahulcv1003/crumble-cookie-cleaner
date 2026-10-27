@@ -15,7 +15,8 @@ Load the extension: open `chrome://extensions`, turn on Developer mode, click "L
 | ACC-02 | Turn on a screen reader (NVDA on Windows) and use the popup and settings | Switches are announced with their state; popup status changes are announced | |
 | ACC-04 | Automated part passes (`tests/unit/design.test.ts`); look at the screenshots in both themes | Text is readable in light and dark | |
 | UIQ-01 | Read `docs/DESIGN.md` | Palette, type, layout, principles and the review are there | |
-| UIQ-02 | Look through `docs/screenshots/` against the PRD's "Things that must not appear" | No matches | |
+| UIQ-02 | Look through `docs/screenshots/` against the current 0.2.0 direction in `docs/DESIGN.md` | Consistent typography, spacing, surfaces and readable controls in both themes; the owner-approved redesign supersedes the original visual restrictions | |
+| Help controls | Hover an action; Tab to a setting's help button; press Escape and Enter; tap a help button on a touch display | Consequences appear before selection, help stays readable and within the window, Escape dismisses it, and reading help never changes a setting | |
 | UIQ-03 | Read every string in `src/_locales/en/messages.json` (or `scripts/strings.py`, which is easier to read) | Sentence case, plain verbs, same names everywhere, no filler, no exclamation marks, no whitelist/greylist outside the importer | |
 | UIQ-04 | Show the popup to someone who hasn't seen it | They can say what will happen to the current site | |
 | Context menus | Settings > Display: turn on right-click menu entries; right-click a page and the toolbar icon | "Keep this site", "Keep this site until restart" and "Clean this site now" appear and work | |

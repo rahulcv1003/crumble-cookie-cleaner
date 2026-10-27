@@ -11,6 +11,7 @@ import { loadRules, loadSettings, saveRules, saveSettings } from "../../core/set
 import { confirmDialog } from "../dialog";
 import { clear, h, mark, send } from "../dom";
 import { ruleErrorText, skipReasonText } from "../rule-text";
+import { helpButton, hideTooltip, withTooltip } from "../tooltip";
 
 const storage = chrome.storage.local;
 const newId = () => crypto.randomUUID();
@@ -30,7 +31,7 @@ function pickRow(site: string, label: string, extra: string, id: string): HTMLEl
     if ((e.target as HTMLInputElement).checked) state.ticked.add(site);
     else state.ticked.delete(site);
   } });
-  return h("li", {}, h("label", { for: id }, box, h("span", { class: "code" }, label)), h("span", { class: "count" }, extra));
+  return h("li", {}, h("label", { for: id }, withTooltip(box, t("tipSetupKeep")), h("span", { class: "code" }, label)), h("span", { class: "count" }, extra));
 }
 
 function addTyped(): void {
@@ -107,11 +108,12 @@ function stepClass(n: number): string {
 }
 
 function render(): void {
+  hideTooltip();
   clear(main);
   const { open, top } = state.candidates;
   const stepOne = h("li", { class: stepClass(1), "aria-current": state.step === 1 ? "step" : undefined },
     h("div", {},
-      h("h2", {}, t("setupStep1Title")),
+      h("div", { class: "help-label" }, h("h2", {}, t("setupStep1Title")), helpButton(t("setupStep1Title"), t("tipSetupKeep"))),
       state.step !== 1
         ? h("p", { class: "sub" }, state.ticked.size === 0 ? t("setupStep1None") : plural("setupStep1Done", state.ticked.size))
         : h("div", {},
@@ -150,7 +152,7 @@ function render(): void {
             h("p", { class: "sub" }, t("setupStep2Help")),
             state.imported ? h("p", {}, plural("setupImported", state.imported)) : null,
             h("div", { class: "buttons" },
-              h("button", { class: "btn", onclick: () => fileInput.click() }, t("actionImportFromCad")),
+              withTooltip(h("button", { class: "btn", onclick: () => fileInput.click() }, t("actionImportFromCad")), t("tipImport")),
               h("button", { class: "btn primary", id: "step2-next", onclick: () => { state.step = 3; render(); } }, state.imported ? t("actionContinue") : t("actionSkipImport")),
               fileInput,
             ),
@@ -164,8 +166,8 @@ function render(): void {
       h("p", { class: "sub" }, t("setupStep3Help")),
       state.step === 3
         ? h("div", { class: "buttons" },
-            h("button", { class: "btn primary", id: "start-auto", onclick: () => finish(true) }, t("actionStartAutomatic")),
-            h("button", { class: "btn", id: "start-manual", onclick: () => finish(false) }, t("actionCleanManually")),
+            withTooltip(h("button", { class: "btn primary", id: "start-auto", onclick: () => finish(true) }, t("actionStartAutomatic")), t("tipSetupAutomatic")),
+            withTooltip(h("button", { class: "btn", id: "start-manual", onclick: () => finish(false) }, t("actionCleanManually")), t("tipSetupManual")),
           )
         : null,
     ),

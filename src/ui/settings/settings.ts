@@ -12,6 +12,8 @@ import { createRule, parseRuleInput, type ListType, type Rule } from "../../core
 import { DELAY_MAX_SECONDS, DELAY_MIN_SECONDS, loadRules, loadSettings, saveRules, saveSettings, type Settings } from "../../core/settings";
 import { confirmDialog } from "../dialog";
 import { append, clear, h, mark, send } from "../dom";
+import { navIcon } from "../icons";
+import { helpButton, hideTooltip, withTooltip } from "../tooltip";
 import { cookiesSummary, listLabel, ruleErrorText, siteDataSummary, skipReasonText, typeLabel } from "../rule-text";
 
 const storage = chrome.storage.local;
@@ -42,8 +44,18 @@ function announce(text: string): void {
 // ---------------------------------------------------------------------------
 
 function settingRow(id: string, label: string, explain: string, control: HTMLElement, opts: { dependent?: boolean } = {}): HTMLElement {
+  const tips: Record<string, string> = {
+    "set-autoClean": "tipAutomatic", "set-delay": "tipDelay", "set-cleanOnDomainChange": "tipDomainChange",
+    "set-cleanDiscardedTabs": "tipDiscarded", "set-cleanOnStartup": "tipStartup", "set-cleanOpenTabsOnStartup": "tipOpenStartup",
+    "set-reloadAfterStartupClean": "tipReload", "set-keepEmbeddedOnKeptSites": "tipEmbedded",
+  };
+  const detail = tips[id] ? t(tips[id]!) : id.startsWith("sd-") ? `${explain} ${t(id === "sd-httpCache" ? "tipHttpCache" : "tipSiteData")}` : explain;
+  const input = control.matches("input, select, button") ? control : control.querySelector<HTMLElement>("input, select, button");
+  if (input && detail !== explain) withTooltip(input, detail);
+  const help = helpButton(label, detail);
+  help.id = `${id}-help-button`;
   return h("div", { class: `setting${opts.dependent ? " dependent" : ""}` },
-    h("div", { class: "text" }, h("label", { for: id }, label), h("p", { id: `${id}-help` }, explain)),
+    h("div", { class: "text" }, h("div", { class: "help-label" }, h("label", { for: id }, label), help), h("p", { id: `${id}-help` }, explain)),
     h("div", { class: "control" }, control),
   );
 }
@@ -93,16 +105,17 @@ async function addRules(): Promise<void> {
 function ruleEditor(rule: Rule): HTMLElement {
   const draft: Rule = structuredClone(rule);
   const radio = (name: string, value: string, checked: boolean, label: string, onChange: () => void) =>
-    h("label", {}, h("input", { type: "radio", name, value, checked, onchange: onChange }), " ", label);
+    h("label", {}, withTooltip(h("input", { type: "radio", name, value, checked, onchange: onChange }), t(name === "list" ? "tipRuleList" : "tipCookieNames")), " ", label);
   const names = h("input", { type: "text", class: "names", "aria-label": t("cookieNamesLabel"), value: draft.cookies.mode === "named" ? draft.cookies.names.join(", ") : "", placeholder: t("cookieNamesPlaceholder"), disabled: draft.cookies.mode === "all" });
   const note = h("input", { type: "text", value: draft.note ?? "", "aria-label": t("noteLabel"), style: "width:100%" });
   const types = h("div", { class: "types" });
+  withTooltip(names, t("tipCookieNames"));
   for (const type of SITE_DATA_TYPES) {
     const sel = h("select", { "aria-label": t("ruleSiteDataLabel", [typeLabel(type)]), onchange: (e: Event) => (draft.siteData[type] = (e.target as HTMLSelectElement).value as "keep" | "clean") },
       h("option", { value: "keep", selected: draft.siteData[type] === "keep" }, t("siteDataKeep")),
       h("option", { value: "clean", selected: draft.siteData[type] === "clean" }, t("siteDataClean")),
     );
-    append(types, [h("span", {}, typeLabel(type)), sel]);
+    append(types, [h("span", {}, typeLabel(type)), withTooltip(sel, t("tipRuleData"))]);
   }
   const save = async () => {
     if (draft.cookies.mode === "named") {
@@ -238,6 +251,7 @@ function listsSection(rules: Rule[]): HTMLElement {
     h("option", { value: "keep", selected: view.addList === "keep" }, t("listKeep")),
     h("option", { value: "restart", selected: view.addList === "restart" }, t("listRestart")),
   );
+  withTooltip(addList, t("tipRuleList"));
 
   const table = h("table", { class: "rules" },
     h("thead", {}, h("tr", {},
@@ -267,8 +281,8 @@ function listsSection(rules: Rule[]): HTMLElement {
       h("td", {}, siteDataSummary(rule)),
       h("td", { class: "muted" }, rule.note ?? ""),
       h("td", { class: "row-actions" },
-        h("button", { class: "link", "aria-label": t("editRuleLabel", [rule.pattern]), onclick: async () => { view.editing = view.editing === rule.id ? null : rule.id; await render(); } }, t("actionEdit")),
-        h("button", { class: "link", "aria-label": t("deleteRuleLabel", [rule.pattern]), onclick: () => deleteRules([rule.id], rules) }, t("actionDelete")),
+        withTooltip(h("button", { class: "link", "aria-label": t("editRuleLabel", [rule.pattern]), onclick: async () => { view.editing = view.editing === rule.id ? null : rule.id; await render(); } }, t("actionEdit")), t("tipEditRule")),
+        withTooltip(h("button", { class: "link", "aria-label": t("deleteRuleLabel", [rule.pattern]), onclick: () => deleteRules([rule.id], rules) }, t("actionDelete")), t("tipDeleteRules")),
       ),
     ));
     if (view.editing === rule.id) tbody.append(h("tr", { class: "editing" }, h("td", { colspan: "8" }, ruleEditor(rule))));
@@ -285,15 +299,15 @@ function listsSection(rules: Rule[]): HTMLElement {
   return h("section", { id: "lists", "aria-labelledby": "h-lists" },
     h("h2", { id: "h-lists" }, t("sectionLists")),
     h("p", { class: "section-note" }, t("listsNote")),
-    h("div", { class: "add" }, addInput, addList, h("button", { class: "btn primary", onclick: addRules }, t("actionAddRules"))),
+    h("div", { class: "add" }, addInput, addList, helpButton(t("addRuleListLabel"), t("tipRuleList")), h("button", { class: "btn primary", onclick: addRules }, t("actionAddRules"))),
     h("p", { id: "add-help", class: "muted", style: "margin:0 0 6px;font-size:13px" }, t("addRuleHelp")),
     view.addErrors.length ? h("ul", { class: "errors", id: "add-errors", role: "alert" }, ...view.addErrors.map((e) => h("li", {}, e))) : h("div", { id: "add-errors" }),
     h("div", { class: "toolbar" }, search, filter, h("span", { class: "muted num" }, plural("countRules", shown.length))),
-    shown.length ? table : h("p", { class: "empty" }, rules.length ? t("noRulesMatch") : t("noRulesYet")),
+    shown.length ? h("div", { class: "rules-scroll" }, table) : h("p", { class: "empty" }, rules.length ? t("noRulesMatch") : t("noRulesYet")),
     h("div", { class: "under-table" },
-      h("button", { class: "btn danger", disabled: selected.length === 0, onclick: () => deleteRules(selected, rules) }, plural("actionDeleteSelected", selected.length)),
-      h("button", { class: "link", onclick: () => fileInput.click() }, t("actionImportRules")),
-      h("button", { class: "link", onclick: () => exportFile(rules), disabled: rules.length === 0 }, t("actionExportRules")),
+      withTooltip(h("button", { class: "btn danger", disabled: selected.length === 0, onclick: () => deleteRules(selected, rules) }, plural("actionDeleteSelected", selected.length)), t("tipDeleteRules")),
+      withTooltip(h("button", { class: "link", onclick: () => fileInput.click() }, t("actionImportRules")), t("tipImport")),
+      withTooltip(h("button", { class: "link", onclick: () => exportFile(rules), disabled: rules.length === 0 }, t("actionExportRules")), t("tipExport")),
       fileInput,
     ),
   );
@@ -428,13 +442,13 @@ function logSection(log: LogEntry[]): HTMLElement {
     h("p", { class: "section-note" }, t("logNote")),
     ...(entries.length ? entries : [h("p", { class: "empty" }, t("logEmpty"))]),
     h("div", { class: "under-table" },
-      h("button", { class: "btn", disabled: log.length === 0, onclick: async () => {
+      withTooltip(h("button", { class: "btn", disabled: log.length === 0, onclick: async () => {
         const ok = await confirmDialog({ title: t("confirmClearLogTitle"), body: [t("confirmClearLogBody")], confirm: t("actionClearLog"), cancel: t("actionCancel"), danger: true });
         if (ok) {
           await storage.set({ cleanupLog: [] });
           await render();
         }
-      } }, t("actionClearLog")),
+      } }, t("actionClearLog")), t("tipClearLog")),
     ),
   );
 }
@@ -491,7 +505,22 @@ function aboutSection(s: Settings, log: LogEntry[]): HTMLElement {
 
 function renderNav(): void {
   clear(nav);
-  nav.append(h("h1", { id: "page-title" }, t("settingsTitle")), h("ul", {}, ...SECTIONS.map((s) => h("li", {}, h("a", { href: `#${s.id}` }, t(s.title))))));
+  nav.append(
+    h("div", { class: "brand" }, h("span", { class: "brand-badge" }, mark("clean")), h("span", { class: "brand-name" }, t("productName"))),
+    h("h1", { id: "page-title" }, t("settingsTitle")),
+    h("ul", {}, ...SECTIONS.map((s) => h("li", {}, h("a", { href: `#${s.id}`, "data-section": s.id }, navIcon(s.id), t(s.title))))),
+    h("p", { class: "nav-note" }, t("settingsLocalNote")),
+  );
+  updateNav();
+}
+
+function updateNav(): void {
+  const params = new URLSearchParams(location.hash.slice(1));
+  const id = (params.get("section") ?? (params.has("rule") ? "lists" : location.hash.slice(1))) || "lists";
+  for (const a of nav.querySelectorAll<HTMLAnchorElement>("[data-section]")) {
+    if (a.dataset.section === id) a.setAttribute("aria-current", "location");
+    else a.removeAttribute("aria-current");
+  }
 }
 
 async function render(): Promise<void> {
@@ -503,14 +532,19 @@ async function render(): Promise<void> {
   ]);
   const log = (logGot.cleanupLog ?? []) as LogEntry[];
   const scrollY = window.scrollY;
+  const focusedId = (document.activeElement as HTMLElement | null)?.id;
   const openLogs = new Set([...document.querySelectorAll("details.log-entry[open]")].map((d, i) => i));
   clear(main);
-  main.append(listsSection(rules), cleaningSection(settings, incognito), siteDataSection(settings), logSection(log), displaySection(settings), aboutSection(settings, log));
+  hideTooltip();
+  main.append(h("div", { class: "page-heading" }, h("h2", {}, t("settingsIntroTitle")), h("p", {}, t("settingsIntroText"))), listsSection(rules), cleaningSection(settings, incognito), siteDataSection(settings), logSection(log), displaySection(settings), aboutSection(settings, log));
   [...document.querySelectorAll("details.log-entry")].forEach((d, i) => openLogs.has(i) && d.setAttribute("open", ""));
   window.scrollTo(0, scrollY);
+  if (focusedId) document.getElementById(focusedId)?.focus({ preventScroll: true });
 }
 
 async function handleHash(): Promise<void> {
+  hideTooltip();
+  updateNav();
   const params = new URLSearchParams(location.hash.slice(1));
   const rule = params.get("rule");
   const section = params.get("section");

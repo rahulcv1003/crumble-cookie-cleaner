@@ -52,7 +52,8 @@ test("SET-05 extension update: rules, settings and log intact; no tab opened", a
 
   const run = await launch(profile, ext, { loadExtension: false, extId });
   const page = await run.hooks();
-  expect(await call(page, "manifestVersion")).toBe("0.1.0");
+  const initialVersion = String(await call(page, "manifestVersion"));
+  expect(initialVersion).toBe(JSON.parse(fs.readFileSync(path.join(ext, "manifest.json"), "utf8")).version);
 
   // State as an older version would have left it: settings without a schema field (pre-schema),
   // rules, and a cleanup log entry (the log itself is built in a later phase; it must survive updates).
@@ -67,11 +68,14 @@ test("SET-05 extension update: rules, settings and log intact; no tab opened", a
   const opened: string[] = [];
   run.ctx.on("page", (p) => opened.push(p.url() || "(pending)"));
 
-  // Ship "0.1.1": change the installed files' version, then reload the extension, which
+  // Ship a patch update: change the installed files' version, then reload the extension, which
   // Chrome treats as an update (onInstalled reason "update").
   const manifestPath = path.join(ext, "manifest.json");
   const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
-  manifest.version = "0.1.1";
+  const parts = initialVersion.split(".").map(Number);
+  parts[parts.length - 1] = parts[parts.length - 1]! + 1;
+  const nextVersion = parts.join(".");
+  manifest.version = nextVersion;
   fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
   const newWorker = run.ctx.waitForEvent("serviceworker", { timeout: 15_000 });
   await page.evaluate(() => chrome.runtime.reload()).catch(() => undefined);
@@ -80,7 +84,7 @@ test("SET-05 extension update: rules, settings and log intact; no tab opened", a
   expect(opened, "pages opened by the update").toEqual([]);
 
   const after = await run.hooks();
-  expect(await call(after, "manifestVersion")).toBe("0.1.1");
+  expect(await call(after, "manifestVersion")).toBe(nextVersion);
   const stored = await call<Record<string, unknown>>(after, "rawGet", null);
   expect(stored.settings).toEqual(changed); // migrated to schema 1 by onInstalled(update), no value lost
   expect(stored.rules).toEqual(added.added);

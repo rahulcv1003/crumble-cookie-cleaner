@@ -21,13 +21,14 @@ async function tabIdFor(hooks: Page, prefix: string): Promise<number> {
 async function shootPopup(ctx: BrowserContext, extId: string, tabId: number, name: string): Promise<void> {
   for (const scheme of ["light", "dark"] as const) {
     const p = await ctx.newPage();
-    await p.setViewportSize({ width: 340, height: 600 });
+    await p.setViewportSize({ width: 380, height: 600 });
     await p.emulateMedia({ colorScheme: scheme });
     await p.goto(`chrome-extension://${extId}/popup.html?tabId=${tabId}`);
     await p.waitForSelector("header");
+    await p.evaluate(() => document.fonts.ready);
     await p.waitForTimeout(150);
     const h = await p.evaluate(() => document.body.scrollHeight);
-    await p.setViewportSize({ width: 340, height: h });
+    await p.setViewportSize({ width: 380, height: h });
     await p.screenshot({ path: path.join(OUT, `popup-${name}-${scheme}.png`) });
     await p.close();
   }
@@ -70,19 +71,21 @@ test("screenshots: settings sections at 1280 px and the welcome flow", async ({ 
   const a = ctx.pages().find((p) => p.url().startsWith("https://a.test/"))!;
   await a.close();
   await call(hooks, "send", { type: "cleanNow" });
+  await configure(hooks, { autoClean: false });
   for (const scheme of ["light", "dark"] as const) {
     const p = await ctx.newPage();
     await p.setViewportSize({ width: 1280, height: 800 });
     await p.emulateMedia({ colorScheme: scheme });
     await p.goto(`chrome-extension://${extId}/settings.html`);
     await p.waitForSelector("#lists");
+    await p.evaluate(() => document.fonts.ready);
+    await p.screenshot({ path: path.join(OUT, `settings-page-${scheme}.png`) });
     for (const id of ["lists", "cleaning", "site-data", "log", "display", "about"]) {
       if (id === "log") await p.evaluate(() => document.querySelector("details.log-entry")?.setAttribute("open", ""));
       const el = p.locator(`#${id}`);
       await el.scrollIntoViewIfNeeded();
       await el.screenshot({ path: path.join(OUT, `settings-${id}-${scheme}.png`) });
     }
-    await p.screenshot({ path: path.join(OUT, `settings-page-${scheme}.png`) });
     await p.close();
   }
   await visit(ctx, hooks, "https://app.test/");
@@ -94,6 +97,7 @@ test("screenshots: settings sections at 1280 px and the welcome flow", async ({ 
     await call(hooks, "saveSettings", { setupComplete: false, autoClean: false });
     await w.goto(`chrome-extension://${extId}/welcome.html`);
     await w.waitForSelector("#step1-next");
+    await w.evaluate(() => document.fonts.ready);
     await w.screenshot({ path: path.join(OUT, `welcome-step1-${scheme}.png`), fullPage: true });
     await w.click("#step1-next");
     await w.waitForSelector("#step2-next");
@@ -105,5 +109,22 @@ test("screenshots: settings sections at 1280 px and the welcome flow", async ({ 
     await w.waitForSelector(".finished");
     await w.screenshot({ path: path.join(OUT, `welcome-finished-${scheme}.png`), fullPage: true });
     await w.close();
+  }
+});
+
+test("screenshots: consequence tooltip, light and dark", async ({ env: { ctx, hooks, extId } }) => {
+  await configure(hooks);
+  await visit(ctx, hooks, "https://a.test/");
+  const tabId = await tabIdFor(hooks, "https://a.test/");
+  for (const scheme of ["light", "dark"] as const) {
+    const page = await ctx.newPage();
+    await page.setViewportSize({ width: 380, height: 500 });
+    await page.emulateMedia({ colorScheme: scheme, reducedMotion: "reduce" });
+    await page.goto(`chrome-extension://${extId}/popup.html?tabId=${tabId}`);
+    await page.evaluate(() => document.fonts.ready);
+    await page.getByRole("button", { name: "Keep until restart", exact: true }).focus();
+    await page.getByRole("tooltip").waitFor();
+    await page.screenshot({ path: path.join(OUT, `popup-help-${scheme}.png`) });
+    await page.close();
   }
 });

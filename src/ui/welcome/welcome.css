@@ -1,31 +1,31 @@
-body { font-size: 15px; }
-main { max-width: 640px; margin: 0 auto; padding: 48px 24px 72px; }
-h1 { font-size: 22px; font-weight: 600; margin: 0 0 10px; display: flex; gap: 12px; align-items: center; }
-h1 .mark { width: 26px; height: 26px; }
-.intro p { margin: 0 0 4px; }
-.intro { padding-bottom: 24px; border-bottom: 1px solid var(--rule); margin-bottom: 8px; }
+body { font-size: 14px; }
+main { max-width: 760px; margin: 0 auto; padding: 56px 28px 80px; }
+.intro { padding: 0 8px 36px; }
+h1 { font-size: 35px; line-height: 1.15; letter-spacing: -0.05em; font-weight: 600; margin: 0 0 22px; display: flex; gap: 14px; align-items: center; }
+h1 .mark { width: 48px; height: 48px; padding: 10px; border-radius: 15px; background: var(--paper-raised); box-shadow: var(--shadow); border: 1px solid var(--rule); }
+.intro p { margin: 0 0 7px; color: var(--muted); font-size: 14px; line-height: 1.6; max-width: 58ch; }
+.intro p:first-of-type { color: var(--ink); }
 ol.steps { list-style: none; margin: 0; padding: 0; counter-reset: step; }
-ol.steps > li { counter-increment: step; display: grid; grid-template-columns: 32px minmax(0, 1fr); padding: 22px 0; border-bottom: 1px solid var(--rule); }
-ol.steps > li::before { content: counter(step); font-variant-numeric: tabular-nums; font-weight: 600; color: var(--muted); }
-ol.steps > li[aria-current="step"]::before { color: var(--ink); }
-ol.steps > li.done::before { color: var(--keep); }
-h2 { font-size: 16px; font-weight: 600; margin: 0 0 6px; }
-.sub { color: var(--muted); margin: 0 0 12px; }
-.picks { list-style: none; padding: 0; margin: 0 0 12px; }
-.picks li { padding: 5px 0; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; gap: 12px; }
+ol.steps > li { counter-increment: step; display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 16px; padding: 26px; margin-bottom: 12px; border: 1px solid var(--rule); border-radius: 18px; background: var(--paper-raised); box-shadow: var(--shadow); }
+ol.steps > li::before { content: counter(step); display: grid; place-items: center; align-self: start; height: 32px; border-radius: 50%; font-variant-numeric: tabular-nums; font-size: 13px; font-weight: 600; color: var(--muted); background: var(--paper); border: 1px solid var(--rule); }
+ol.steps > li[aria-current="step"] { border-color: color-mix(in srgb, var(--signal) 40%, var(--rule)); }
+ol.steps > li[aria-current="step"]::before { color: var(--signal-ink); background: var(--signal); border-color: var(--signal); }
+ol.steps > li.done::before { color: var(--keep); background: var(--keep-tint); border-color: transparent; }
+h2 { font-size: 18px; font-weight: 600; letter-spacing: -0.025em; margin: 3px 0 8px; }
+.sub { color: var(--muted); font-size: 12px; line-height: 1.7; margin: 0 0 14px; }
+.picks { list-style: none; padding: 0; margin: 0 0 14px; border: 1px solid var(--rule); border-radius: 10px; }
+.picks li { padding: 11px 12px; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; gap: 12px; }
 .picks li:first-child { border-top: 0; }
-.picks label { cursor: pointer; display: flex; gap: 8px; align-items: center; }
-.picks .count { color: var(--muted); font-variant-numeric: tabular-nums; }
-h3 { font-size: 13px; font-weight: 600; color: var(--muted); margin: 14px 0 4px; }
-.add { display: flex; gap: 8px; margin-top: 8px; }
-.add input { flex: 1; font-family: var(--mono); }
-.errors { color: var(--alert); margin: 6px 0 0; padding: 0; list-style: none; }
-.buttons { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
-.inactive { color: var(--muted); }
-.finished { padding: 22px 0; }
-dialog { border: 1px solid var(--ink); border-radius: var(--radius); background: var(--paper); color: var(--ink); padding: 18px 20px; max-width: 560px; }
-dialog::backdrop { background: rgb(0 0 0 / 0.35); }
-dialog h3 { margin: 0 0 8px; font-size: 15px; color: var(--ink); }
-dialog p { margin: 0 0 10px; }
-dialog .buttons { justify-content: flex-end; }
-dialog ul.skipped { max-height: 160px; overflow: auto; padding-left: 18px; }
+.picks label { cursor: pointer; display: flex; gap: 9px; align-items: center; }
+.picks .count { color: var(--muted); font-variant-numeric: tabular-nums; font-size: 11px; }
+h3 { font-size: 11px; font-weight: 550; color: var(--muted); margin: 18px 0 8px; }
+.add { display: flex; gap: 8px; margin-top: 12px; }
+.add input { flex: 1; min-width: 0; font-family: var(--mono); font-size: 12px; }
+.errors { color: var(--alert); margin: 8px 0 0; padding: 0; list-style: none; font-size: 12px; }
+.buttons { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+.inactive { color: var(--muted); box-shadow: none; }
+.inactive .sub, .done .sub { margin-bottom: 0; }
+.finished { padding: 24px 26px; border-radius: 18px; border: 1px solid color-mix(in srgb, var(--keep) 40%, var(--rule)); background: var(--keep-tint); margin-top: 20px; }
+.finished p:first-child { font-size: 16px; font-weight: 550; margin: 0 0 10px; color: var(--keep); }
+.finished .sub { margin-bottom: 0; }
+@media (max-width: 560px) { main { padding: 28px 16px 48px; } h1 { font-size: 29px; } ol.steps > li { padding: 20px 16px; gap: 12px; grid-template-columns: 28px minmax(0, 1fr); } ol.steps > li::before { width: 28px; height: 28px; } }

@@ -15,21 +15,25 @@ const shots = path.join(OUT, "screenshots");
 fs.mkdirSync(shots, { recursive: true });
 const b64 = (buf: Buffer) => `data:image/png;base64,${buf.toString("base64")}`;
 const icon = fs.readFileSync(path.resolve(process.cwd(), "assets/icons/icon.svg"), "utf8");
-// Light status mark for the dark caption bar.
-const capMark = '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" fill="none" stroke="#f3f4f1" stroke-width="2.2"/><path d="M6.5 17.5 17.5 6.5" stroke="#f3f4f1" stroke-width="2.2" stroke-linecap="round"/></svg>';
+const fontFace = `@font-face{font-family:Inter;src:url(data:font/woff2;base64,${fs.readFileSync(path.resolve("assets/fonts/InterVariable.woff2")).toString("base64")}) format("woff2");font-weight:100 900}`;
+// Original Crumble status mark for the light caption bar.
+const capMark = '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4" fill="none" stroke="#1d1d1f" stroke-width="1.8"/><path d="M6.5 17.5 17.5 6.5" stroke="#1d1d1f" stroke-width="1.8" stroke-linecap="round"/></svg>';
 
 const FRAME = (img: string, caption: string, imgWidth: number) => `<!doctype html><html><head><style>
-  html,body{margin:0;width:1280px;height:800px;background:#e7e9e5;font-family:Inter,"Segoe UI",Roboto,Arial,sans-serif}
-  .cap{height:96px;display:flex;align-items:center;gap:16px;padding:0 48px;background:#1d2126;color:#f3f4f1;font-size:30px;font-weight:600}
+  ${fontFace}
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{margin:0;width:1280px;height:800px;overflow:hidden;background:#f5f5f7;font-family:Inter,"Segoe UI",Roboto,Arial,sans-serif}
+  .cap{height:104px;display:flex;align-items:center;gap:16px;padding:0 48px;color:#1d1d1f;font-size:28px;letter-spacing:-0.035em;font-weight:600}
   .cap svg{width:40px;height:40px}
-  .stage{height:704px;display:flex;align-items:center;justify-content:center}
-  .stage img{width:${imgWidth}px;max-height:650px;object-fit:contain;object-position:top;border:1px solid #c8cdd0;box-shadow:0 2px 0 #c8cdd0;background:#f3f4f1}
+  .stage{height:696px;display:flex;align-items:center;justify-content:center;padding-bottom:20px}
+  .stage img{width:auto;max-width:${imgWidth}px;max-height:630px;object-fit:contain;object-position:top;border:1px solid #dedee5;border-radius:20px;box-shadow:0 16px 48px #1d1d1f12;background:#fff}
 </style></head><body><div class="cap">${capMark}<span>${caption}</span></div><div class="stage"><img src="${img}"></div></body></html>`;
 
 async function render(ctx: BrowserContext, html: string, w: number, h: number, file: string): Promise<void> {
   const p = await ctx.newPage();
   await p.setViewportSize({ width: w, height: h });
   await p.setContent(html);
+  await p.evaluate(() => document.fonts.ready);
   await p.screenshot({ path: file });
   await p.close();
 }
@@ -58,18 +62,23 @@ test("store assets", async ({ env: { ctx, hooks, extId } }) => {
 
   // 1. popup on a site being cleaned
   const popup = await openPopup(ctx, extId, await tabIdOf(hooks, "https://app.test/"));
+  await popup.emulateMedia({ colorScheme: "light", reducedMotion: "reduce" });
+  await popup.evaluate(() => document.fonts.ready);
   // Render the popup at 2x pixel density so it stays sharp at a readable size in the store image.
   const popupHeight = await popup.evaluate(() => Math.ceil(document.getElementById("app")!.getBoundingClientRect().height));
   const cdp = await ctx.newCDPSession(popup);
-  await cdp.send("Emulation.setDeviceMetricsOverride", { width: 340, height: popupHeight, deviceScaleFactor: 2, mobile: false });
-  const p1 = await popup.screenshot({ clip: { x: 0, y: 0, width: 340, height: popupHeight } });
-  await render(ctx, FRAME(b64(p1), "Close a tab, and the site forgets you", 600), 1280, 800, path.join(shots, "1-popup.png"));
+  await cdp.send("Emulation.setDeviceMetricsOverride", { width: 380, height: popupHeight, deviceScaleFactor: 2, mobile: false });
+  await popup.evaluate(() => document.fonts.ready);
+  const p1 = await popup.screenshot({ clip: { x: 0, y: 0, width: 380, height: popupHeight } });
+  await render(ctx, FRAME(b64(p1), "Close a tab, and the site forgets you", 440), 1280, 800, path.join(shots, "1-popup.png"));
 
   // 2. the Keep list, 3. the log, 4. the import preview
   const s = await ctx.newPage();
-  await s.setViewportSize({ width: 1100, height: 900 });
+  await s.emulateMedia({ colorScheme: "light", reducedMotion: "reduce" });
+  await s.setViewportSize({ width: 1280, height: 900 });
   await s.goto(`chrome-extension://${extId}/settings.html`);
   await s.waitForSelector("#lists");
+  await s.evaluate(() => document.fonts.ready);
   await render(ctx, FRAME(b64(await shot(s, "#lists")), "Keep the sites you trust, with the rules you know", 1000), 1280, 800, path.join(shots, "2-keep-list.png"));
   await s.evaluate(() => document.querySelector("details.log-entry")?.setAttribute("open", ""));
   await render(ctx, FRAME(b64(await shot(s, "#log")), "A clear record of what was kept and why", 1000), 1280, 800, path.join(shots, "3-log.png"));
@@ -81,7 +90,8 @@ test("store assets", async ({ env: { ctx, hooks, extId } }) => {
 
   // promo tile and marquee
   const promo = (w: number, h: number, size: number) => `<!doctype html><html><head><style>
-    html,body{margin:0;width:${w}px;height:${h}px;background:#1d2126;color:#f3f4f1;font-family:Inter,"Segoe UI",Roboto,Arial,sans-serif}
+    ${fontFace}
+    html,body{margin:0;width:${w}px;height:${h}px;background:#111216;color:#f5f5f7;font-family:Inter,"Segoe UI",Roboto,Arial,sans-serif}
     .w{height:100%;display:flex;align-items:center;gap:${size}px;padding:0 ${size * 1.5}px}
     .w svg{width:${size * 4}px;height:${size * 4}px;flex:none}
     h1{margin:0;font-size:${size * 1.6}px;line-height:1.15;font-weight:600}

@@ -48,7 +48,7 @@ for (const scheme of ["light", "dark"] as const) {
     ];
     for (const [name, open] of pages) {
       const page = await open();
-      await page.emulateMedia({ colorScheme: scheme });
+      await page.emulateMedia({ colorScheme: scheme, reducedMotion: "reduce" });
       const issues = await audit(page);
       expect(issues, `${name} (${scheme})`).toEqual([]);
       await page.close();

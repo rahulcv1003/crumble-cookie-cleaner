@@ -1,9 +1,9 @@
-# Release checklist (version 0.1.0)
+# Release checklist (version 0.2.0)
 
 | Item | Status | Notes |
 |---|---|---|
-| Version bumped in the manifest and changelog | Done | 0.1.0 in `manifest.json` and `site/changelog.page.html` |
-| Packed zip built from a clean checkout; no source maps, tests or fixtures inside | Automated in CI | `npm run package` builds `release/crumble-0.1.0.zip` (39 files), includes the project and runtime dependency licences, and refuses maps, specs, fixtures and test hooks |
+| Version bumped in the manifest and changelog | Done | 0.2.0 in the manifest, package metadata and changelogs |
+| Packed zip built from a clean checkout; no source maps, tests or fixtures inside | Automated in CI | `npm run package` builds `release/crumble-0.2.0.zip` (41 files), includes the project, runtime and font licences, and refuses maps, specs, fixtures and test hooks |
 | Installed from the zip on fresh Chrome and Edge profiles with no console errors | Waiting for you | Your final test (FINAL-TEST.md) covers Chrome; Edge is the same steps at `edge://extensions` |
 | Store listing, screenshots and tiles uploaded to Chrome Web Store and Edge Add-ons | Ready, needs your developer accounts | Text: `store/listing-en.md`. Images: `store/screenshots/`, `store/promo-small-440x280.png`, `store/marquee-1400x560.png`. Icon: `assets/icons/icon-128.png`. Chrome charges a one-time $5 developer fee |
 | Privacy practices form: no data collected | Ready | Single purpose: "Deletes cookies and site data for websites the user has left, except sites the user chooses to keep." See `docs/PRIVACY.md` |

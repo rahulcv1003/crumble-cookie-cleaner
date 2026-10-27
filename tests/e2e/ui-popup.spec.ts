@@ -74,7 +74,9 @@ test("POP-05 'Clean, including open tabs': the confirmation shows the count; on 
   const dialog = popup.getByRole("alertdialog");
   // a.test, tracker.test and widget.test (its own third-party cookie) are not kept; b.test is kept,
   // and the cookie widget.test set while embedded on b.test is kept with it.
-  await expect(dialog).toContainText("Delete cookies and site data for 3 sites, including sites open in tabs? This can't be undone after 2 minutes.");
+  await expect(dialog).toContainText("Delete cookies and site data for 3 sites, including sites open in tabs?");
+  await expect(dialog).toContainText("You may be signed out");
+  await expect(dialog).toContainText("site data cannot be restored");
   expect(await has(hooks, "first", "a.test")).toBe(true); // nothing changes before confirming
   await dialog.getByRole("button", { name: "Delete cookies and site data" }).click();
   await expect(popup.locator(".last")).toContainText("Cleaned 3 sites");

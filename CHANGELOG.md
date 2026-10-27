@@ -2,6 +2,20 @@
 
 All notable changes to Crumble are recorded here.
 
+## 0.2.0 — 27 October 2026
+
+### Changed
+
+- Redesigned the popup, settings, and first-run setup with a refined light/dark palette, softer surfaces, clearer hierarchy, and more deliberate spacing.
+- Bundled the Inter 4.1 variable typeface locally, including its font licence; no font service is contacted.
+- Added original sidebar icons, active navigation styling, responsive settings layouts, and improved keyboard focus.
+- Added contextual tooltips for settings, site rules, setup choices, cleanup actions, import/export, and Undo. Help works on hover and focus, supports touch/keyboard activation, and dismisses with Escape.
+- Clarified that cookie Undo lasts two minutes and never restores deleted site data.
+- Refreshed documentation and store artwork for the redesigned interface.
+- Made screenshot commands work in both Windows and Linux.
+
+Cleanup rules, defaults, storage schema, and permission scope are unchanged.
+
 ## 0.1.0 — 15 October 2026
 
 Initial public release candidate.

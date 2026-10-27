@@ -1,5 +1,11 @@
 # Build report: Crumble 0.1.0
 
+> **Current version: 0.2.0 (27 October 2026).** The popup, settings and setup have
+> been redesigned, with locally bundled Inter typography and contextual help.
+> See [the interface update](docs/UI-UPDATE-2026-10-27.md) and
+> [current verification](docs/TEST-RESULTS.md). The report below records the
+> original 0.1.0 build; its package path and test counts are historical.
+
 15 October 2026. All four build phases (A to D) are done. The extension is in `dist/` (load it with "Load unpacked") and the store zip is `release/crumble-0.1.0.zip`.
 
 ## Tests

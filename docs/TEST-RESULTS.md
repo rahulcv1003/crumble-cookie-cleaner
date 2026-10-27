@@ -1,5 +1,29 @@
 # Test results
 
+## Interface update: 27 October 2026 — 0.2.0
+
+- Typecheck, lint, production build and all **120 unit tests** passed on Windows.
+- The full Windows browser attempt recorded 65 passes, 13 failures and the existing
+  discarded-tab skip. Ten failures occurred before the test body because the
+  persistent-install helper expects Linux's `Preferences` layout; Windows stores
+  those extension entries in `Secure Preferences`. These are not counted as passes.
+- Fixed a keyboard-focus scrolling issue that dismissed help, and updated the
+  open-tabs confirmation assertion for its clearer cookie/site-data warning.
+  A targeted run then passed all **5 tests**, covering all three help tests,
+  open-tabs cleanup confirmation, and the data-type preservation test that timed
+  out once in the full run.
+- Both themes' axe checks passed with **zero violations**. The production-build
+  setup/popup/settings smoke test and no-network test also passed.
+- The 41-file `release/crumble-0.2.0.zip` includes the local Inter variable font,
+  its OFL licence and runtime notices; test hooks, fixtures and source maps are absent.
+- All **3 interface screenshot generators** and the **store-asset generator** passed;
+  the refreshed screenshots and promotional artwork were visually reviewed.
+- The full Linux CI run remains the authoritative restart/incognito/update check.
+  Its result will be linked here once the published source finishes verification.
+- New help behaviour, typography and screenshots are described in
+  [the interface update](UI-UPDATE-2026-10-27.md). Real Chrome, screen-reader and
+  touch acceptance remain in [manual tests](MANUAL-TESTS.md).
+
 ## Pre-store release review: 19 October 2026
 
 - Tested source: `57f6b54a41d655d8f8a7181632f453b9ef34e988`.

@@ -8,3 +8,5 @@ Thanks for helping. A few rules keep Crumble safe, because a bug here can log so
 - **No network, no `eval`, no `innerHTML`.** Lint enforces these in `src/`.
 - **All user-facing text goes in `_locales`.** Edit `scripts/strings.py`, then run `python3 scripts/strings.py src/_locales/en/messages.json`. Use sentence case, plain verbs, and the names Keep, Keep until restart and Clean.
 - **UI changes** must follow `docs/DESIGN.md`; include before and after screenshots (`npm run screenshots`).
+- **Explain consequences.** Use the shared `withTooltip` / `helpButton` helpers for contextual help. Keep destructive warnings visible in confirmations. Check mouse, keyboard, Escape, narrow windows and both themes.
+- **Bundle fonts locally.** Inter and its OFL licence ship with the extension; never add a remote font request. Preserve third-party notices when updating assets.

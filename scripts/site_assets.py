@@ -1,12 +1,14 @@
 # Regenerates the landing site's images (committed in site/): popup.webp from the real
 # popup screenshot, and og.png (1200 x 630) for link previews. Needs Pillow.
 from PIL import Image, ImageDraw, ImageFont
-import os
+import os, sys
 root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 shot = Image.open(os.path.join(root, "docs/screenshots/popup-will-be-cleaned-light.png")).convert("RGB")
 w = 680; h = round(shot.height * w / shot.width)
 shot.resize((w, h), Image.LANCZOS).save(os.path.join(root, "site/popup.webp"), "WEBP", quality=88)
 print("popup.webp", w, h)
+if "--popup-only" in sys.argv:
+    sys.exit(0)
 
 og = Image.new("RGB", (1200, 630), (0xF3, 0xF4, 0xF1))
 d = ImageDraw.Draw(og)

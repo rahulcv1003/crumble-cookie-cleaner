@@ -4,6 +4,7 @@ This file is the single place that says where the build stands, so any session c
 Resume rule: read `crumble-cookie-cleaner-PRD.md`, then this file, then `docs/DECISIONS.md`, then continue at "Next step".
 
 ## Status
+- UI update: 0.2.0 (27 Oct 2026). Premium visual redesign, bundled Inter font, contextual help, refreshed screenshots/store assets and documentation. See `docs/UI-UPDATE-2026-10-27.md` and `docs/TEST-RESULTS.md` for current verification. Earlier phase counts below describe 0.1.0.
 - Phase A: DONE (15 Oct 2026). See PHASE-A-REPORT.md.
 - Phase B (cleanup engine): DONE (15 Oct 2026). 78 unit + 34 E2E pass. See docs/TEST-RESULTS.md
 - Phase C (interface): DONE (15 Oct 2026). 112 unit + 68 E2E pass. Owner review pending for UIQ-02/03.

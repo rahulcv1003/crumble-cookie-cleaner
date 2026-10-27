@@ -2,6 +2,8 @@
 
 Crumble collects nothing and sends nothing.
 
+The Inter typeface is included inside the extension. It is never downloaded from a font service while you use Crumble.
+
 - **No account, no analytics, no telemetry, no servers.** The extension makes no network requests of any kind; the PRV-01 test monitors every extension context for a full session and finds none. The only time it opens a web page is when you click a link (changelog, privacy policy, "Report a problem", the rating request), and that page opens in a normal tab.
 - **What it stores, and where.** Everything stays in your browser:
   - in `chrome.storage.local`: your rules, settings and the cleanup log, plus the install date, a cleanup counter, whether you answered the rating request, and the web addresses (origins only, no paths) of sites still waiting for their site data to be cleaned. An address is removed as soon as that site's data is cleaned.

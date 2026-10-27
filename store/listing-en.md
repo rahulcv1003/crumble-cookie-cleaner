@@ -28,6 +28,9 @@ Put the sites you want to stay logged in to on Keep, and they're never cleaned a
 **Undo**
 Closed a tab by accident? Cleaning waits 15 seconds by default, and reopening the site in time keeps everything. After a cleanup, Undo restores the deleted cookies for 2 minutes. Site data can't be restored.
 
+**A considered interface, with help when you need it**
+A refined light and dark interface makes your site's status clear. Contextual help explains what settings and cleanup actions do before you choose them, including when you may be signed out and what Undo can restore. Fonts are bundled locally and never fetched from a font service.
+
 **Why it asks for access to all websites**
 Chrome only lets an extension read and delete cookies for sites it has access to. To clean any site you leave, Crumble needs access to all of them. It never reads or changes what's on the pages you visit, and it doesn't ask for your browsing history.
 
