@@ -20,6 +20,9 @@
   the refreshed screenshots and promotional artwork were visually reviewed.
 - The full Linux CI run remains the authoritative restart/incognito/update check.
   Its result will be linked here once the published source finishes verification.
+- The first CI attempt stopped before tests because `ubuntu-latest` had moved
+  to Ubuntu 26.04, unsupported by the pinned Playwright 1.56.0. CI now uses
+  Ubuntu 24.04 explicitly, matching the earlier successful release environment.
 - New help behaviour, typography and screenshots are described in
   [the interface update](UI-UPDATE-2026-10-27.md). Real Chrome, screen-reader and
   touch acceptance remain in [manual tests](MANUAL-TESTS.md).
